@@ -1,15 +1,15 @@
 ![github_icon](images/mod_icon.png)
 
-## **About [Mod Name]**
+## **About Interfaced]**
 
-Write a bit of information about your mod in a short paragraph here!
+Interfaced is a small Minecraft mod for [Fabric](https://fabricmc.net) 1.21.1 that improves upon various GUIs in the game. This mod aims to come up with more elegant solutions to the way information is displayed, from replacements for unimmersive debug menus and more!
 
 ## **Information**
 
-For more information about [Mod Name], please check out the [Wiki](https://github.com/Sydokiddo/chrysalis/wiki)!
+For more information about Interfaced, please check out the [Wiki](https://github.com/Sydokiddo/interfaced/wiki)!
 
 ## **Download**
 
-[Mod Name] can be downloaded from these sources:
+Interfaced can be downloaded from these sources:
 
-* Add a download link here!
+* (Come back later!)
