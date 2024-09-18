@@ -1,29 +1,29 @@
 {
   "schemaVersion": 1,
-  "id": "mod_id",
+  "id": "interfaced",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Interfaced",
+  "description": "Simple improvements to Minecraft's GUIs and the way information is displayed!",
   "authors": [
     "Sydokiddo"
   ],
   "contact": {},
-  "license": "Custom License",
-  "icon": "assets/mod_id/icon.png",
-  "accessWidener": "mod_id.accesswidener",
+  "license": "MIT",
+  "icon": "assets/interfaced/icon.png",
+  "accessWidener": "interfaced.accesswidener",
   "environment": "*",
 
   "entrypoints": {
     "main": [
-      "net.sydokiddo.mod_id.Mod"
+      "net.sydokiddo.mod_id.Interfaced"
     ],
     "client": [
-      "net.sydokiddo.mod_id.client.ModClient"
+      "net.sydokiddo.mod_id.client.InterfacedClient"
     ]
   },
   "mixins": [
-    "mod_id.mixins.json"
+    "interfaced.mixins.json"
   ],
 
   "depends": {

@@ -7,7 +7,7 @@ import net.sydokiddo.chrysalis.Chrysalis;
 
 @Environment(EnvType.CLIENT)
 @SuppressWarnings("all")
-public class ModClient implements ClientModInitializer {
+public class InterfacedClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
