@@ -16,10 +16,10 @@
 
   "entrypoints": {
     "main": [
-      "net.sydokiddo.mod_id.Interfaced"
+      "net.sydokiddo.interfaced.Interfaced"
     ],
     "client": [
-      "net.sydokiddo.mod_id.client.InterfacedClient"
+      "net.sydokiddo.interfaced.client.InterfacedClient"
     ]
   },
   "mixins": [

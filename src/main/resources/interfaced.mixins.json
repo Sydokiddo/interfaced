@@ -1,10 +1,13 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "net.sydokiddo.mod_id.mixin",
+  "package": "net.sydokiddo.interfaced.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "PlayerManagerMixin"
+    "PlayerManagerMixin",
+    "items.CrossbowItemMixin",
+    "items.ItemMixin",
+    "items.ItemMixin$ItemStackMixin"
   ],
   "client": [],
   "injectors": {

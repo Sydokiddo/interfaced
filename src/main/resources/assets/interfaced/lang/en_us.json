@@ -1,0 +1,18 @@
+{
+  "mod.interfaced": "Interfaced",
+  "gui.interfaced.wiki": "Wiki",
+
+  "gui.interfaced.item.compass.current_location": "Current Location:",
+  "gui.interfaced.item.compass.lodestone_location": "Lodestone Location:",
+  "gui.interfaced.item.recovery_compass.death_location": "Last Death Location:",
+
+  "gui.interfaced.item.clock.standard_time": "Time: %s:%s %s",
+  "gui.interfaced.item.clock.military_time": "Time: %s:%s",
+  "gui.interfaced.item.clock.hour_am": "AM",
+  "gui.interfaced.item.clock.hour_pm": "PM",
+  "gui.interfaced.item.clock.day": "Day: %s",
+
+  "gui.interfaced.item.food.nutrition_points": "+%s Nutrition",
+  "gui.interfaced.item.food.saturation_points": "+%s Saturation",
+  "gui.interfaced.item.cake.for_each_slice": "For Each Slice:"
+}

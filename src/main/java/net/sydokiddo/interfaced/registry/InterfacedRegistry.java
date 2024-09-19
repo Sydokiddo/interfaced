@@ -1,6 +1,6 @@
-package net.sydokiddo.mod_id.registry;
+package net.sydokiddo.interfaced.registry;
 
-import net.sydokiddo.mod_id.Interfaced;
+import net.sydokiddo.interfaced.Interfaced;
 
 public class InterfacedRegistry {
 

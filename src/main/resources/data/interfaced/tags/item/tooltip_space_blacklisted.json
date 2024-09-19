@@ -1,0 +1,6 @@
+{
+  "values": [
+    "minecraft:crossbow",
+    {"id": "#endlessencore:disobeys_gravity", "required": false}
+  ]
+}

@@ -1,10 +1,10 @@
-package net.sydokiddo.mod_id.mixin;
+package net.sydokiddo.interfaced.mixin;
 
 import net.minecraft.network.Connection;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.network.CommonListenerCookie;
 import net.minecraft.server.players.PlayerList;
-import net.sydokiddo.mod_id.Interfaced;
+import net.sydokiddo.interfaced.Interfaced;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
