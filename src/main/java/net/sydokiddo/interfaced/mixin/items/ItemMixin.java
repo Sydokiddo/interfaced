@@ -11,6 +11,7 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.LodestoneTracker;
 import net.sydokiddo.chrysalis.misc.util.helpers.ItemHelper;
@@ -25,7 +26,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
-import java.util.Objects;
 
 @Mixin(Item.class)
 public class ItemMixin {
@@ -53,8 +53,16 @@ public class ItemMixin {
 
             if (itemStack.getComponents().has(DataComponents.FOOD)) {
 
-                list.add(Component.translatable(nutritionString, Objects.requireNonNull(itemStack.get(DataComponents.FOOD)).nutrition()).withStyle(ChatFormatting.BLUE));
-                list.add(Component.translatable(saturationString, BigDecimal.valueOf(Objects.requireNonNull(itemStack.get(DataComponents.FOOD)).saturation()).setScale(1, RoundingMode.DOWN)).withStyle(ChatFormatting.BLUE));
+                FoodProperties foodProperties = itemStack.get(DataComponents.FOOD);
+                assert foodProperties != null;
+
+                list.add(Component.translatable(nutritionString, foodProperties.nutrition()).withStyle(ChatFormatting.BLUE));
+                list.add(Component.translatable(saturationString, BigDecimal.valueOf(foodProperties.saturation()).setScale(1, RoundingMode.DOWN).stripTrailingZeros()).withStyle(ChatFormatting.BLUE));
+
+                if (!foodProperties.effects().isEmpty()) {
+                    list.add(CommonComponents.EMPTY);
+                    ICommonMethods.addFoodEffectTooltip(list, foodProperties.effects(), tooltipContext.tickRate());
+                }
 
                 if (itemStack.getItem() instanceof SuspiciousStewItem && tooltipFlag.isCreative()) list.add(CommonComponents.EMPTY);
             }
