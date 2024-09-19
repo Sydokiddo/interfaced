@@ -79,11 +79,7 @@ public class InterfacedClient implements ClientModInitializer {
                 BlockState blockState = Objects.requireNonNull(context.client().level).getBlockState(lookedAtBlock.getBlockPos());
 
                 if (lookedAtBlock.getType() == HitResult.Type.BLOCK && blockState.getBlock() instanceof NoteBlock) {
-
-                    int notePitch = blockState.getValue(NoteBlock.NOTE);
-                    if (notePitch == 25) notePitch = 0;
-                    Component messageToSend = Component.translatable("gui.interfaced.block.note_block.note_pitch", notePitch);
-
+                    Component messageToSend = Component.translatable("gui.interfaced.block.note_block.note_pitch", blockState.getValue(NoteBlock.NOTE));
                     Minecraft.getInstance().gui.setOverlayMessage(messageToSend, true);
                     Minecraft.getInstance().getNarrator().sayNow(messageToSend);
                 }

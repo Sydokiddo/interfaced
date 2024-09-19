@@ -12,7 +12,6 @@ public class Interfaced implements ModInitializer {
 	public static final String MOD_ID = "interfaced";
 	public static final Logger LOGGER = LoggerFactory.getLogger("Interfaced");
 
-	@SuppressWarnings("unused")
 	public static ResourceLocation id(String name) {
 		return ResourceLocation.fromNamespaceAndPath(MOD_ID, name);
 	}
