@@ -10,6 +10,7 @@ public class ModTags {
     // Tags
 
     public static final TagKey<Item>
+        FOOD_TOOLTIP_BLACKLISTED = registerItemTag("food_tooltip_blacklisted"),
         TOOLTIP_SPACE_BLACKLISTED = registerItemTag("tooltip_space_blacklisted")
     ;
 

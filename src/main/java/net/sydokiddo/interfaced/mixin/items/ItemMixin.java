@@ -15,12 +15,15 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.LodestoneTracker;
 import net.sydokiddo.chrysalis.misc.util.helpers.ItemHelper;
 import net.sydokiddo.interfaced.registry.misc.ICommonMethods;
+import net.sydokiddo.interfaced.registry.misc.ModTags;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 import java.util.Objects;
 
@@ -36,7 +39,8 @@ public class ItemMixin {
 
         // Food Tooltips
 
-        if (!FabricLoader.getInstance().isModLoaded("appleskin")) {
+        if (!FabricLoader.getInstance().isModLoaded("appleskin") && !itemStack.is(ModTags.FOOD_TOOLTIP_BLACKLISTED)) {
+
             String nutritionString = "gui.interfaced.item.food.nutrition_points";
             String saturationString = "gui.interfaced.item.food.saturation_points";
 
@@ -50,14 +54,14 @@ public class ItemMixin {
             if (itemStack.getComponents().has(DataComponents.FOOD)) {
 
                 list.add(Component.translatable(nutritionString, Objects.requireNonNull(itemStack.get(DataComponents.FOOD)).nutrition()).withStyle(ChatFormatting.BLUE));
-                list.add(Component.translatable(saturationString, ItemHelper.getFoodSaturation(itemStack)).withStyle(ChatFormatting.BLUE));
+                list.add(Component.translatable(saturationString, BigDecimal.valueOf(Objects.requireNonNull(itemStack.get(DataComponents.FOOD)).saturation()).setScale(1, RoundingMode.DOWN)).withStyle(ChatFormatting.BLUE));
 
                 if (itemStack.getItem() instanceof SuspiciousStewItem && tooltipFlag.isCreative()) list.add(CommonComponents.EMPTY);
             }
         }
     }
 
-    @SuppressWarnings("unused")
+    @SuppressWarnings("all")
     @Mixin(ItemStack.class)
     public static abstract class ItemStackMixin {
 

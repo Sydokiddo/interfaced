@@ -14,5 +14,8 @@
 
   "gui.interfaced.item.food.nutrition_points": "+%s Nutrition",
   "gui.interfaced.item.food.saturation_points": "+%s Saturation",
-  "gui.interfaced.item.cake.for_each_slice": "For Each Slice:"
+  "gui.interfaced.item.cake.for_each_slice": "For Each Slice:",
+
+  "tag.item.interfaced.food_tooltip_blacklisted": "Food Tooltip Blacklisted",
+  "tag.item.interfaced.tooltip_space_blacklisted": "Tooltip Space Blacklisted"
 }
