@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "interfaced:item/environment_detector_cold"
+  }
+}

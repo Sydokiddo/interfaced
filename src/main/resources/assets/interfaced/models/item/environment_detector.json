@@ -1,0 +1,26 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "interfaced:item/environment_detector_temperate"
+  },
+  "overrides": [
+    {
+      "model": "interfaced:item/environment_detector_temperate",
+      "predicate": {
+        "interfaced:type": 0.1
+      }
+    },
+    {
+      "model": "interfaced:item/environment_detector_warm",
+      "predicate": {
+        "interfaced:type": 0.2
+      }
+    },
+    {
+      "model": "interfaced:item/environment_detector_cold",
+      "predicate": {
+        "interfaced:type": 0.3
+      }
+    }
+  ]
+}

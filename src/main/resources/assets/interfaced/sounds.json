@@ -1,0 +1,8 @@
+{
+  "item.environment_detector.use": {
+    "sounds": [
+      "interfaced:item/environment_detector/use"
+    ],
+    "subtitle": "subtitles.item.environment_detector.use"
+  }
+}

@@ -4,17 +4,23 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.ChatFormatting;
+import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.GlobalPos;
+import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.LodestoneTracker;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.sydokiddo.chrysalis.misc.util.helpers.ItemHelper;
+import net.sydokiddo.interfaced.registry.items.ModItems;
 import net.sydokiddo.interfaced.registry.misc.ICommonMethods;
 import net.sydokiddo.interfaced.registry.misc.ModTags;
 import org.spongepowered.asm.mixin.Mixin;
@@ -189,6 +195,34 @@ public class ItemMixin {
                     }
 
                     cir.getReturnValue().add(Component.translatable("gui.interfaced.item.clock.day", minecraft.level.getDayTime() / 24000L).withStyle(ChatFormatting.BLUE));
+                }
+
+                // endregion
+
+                // region Environment Detector Tooltip
+
+                if (itemStack.is(ModItems.ENVIRONMENT_DETECTOR)) {
+
+                    Holder<Biome> biome = minecraft.level.getBiome(minecraft.player.getOnPos());
+
+                    biome.unwrapKey().ifPresent(key -> {
+                        Component biomeName = Component.translatable(Util.makeDescriptionId("biome", key.location()));
+                        cir.getReturnValue().add(Component.translatable("gui.interfaced.item.environment_detector.biome", biomeName).withStyle(ChatFormatting.BLUE));
+                        cir.getReturnValue().add(Component.translatable("gui.interfaced.item.environment_detector.biome_temperature", biome.value().getBaseTemperature()).withStyle(ChatFormatting.BLUE));
+                    });
+
+                    BlockPos highestPos = new BlockPos(minecraft.player.getBlockX(), minecraft.level.getHeight(Heightmap.Types.WORLD_SURFACE, minecraft.player.getBlockX(), minecraft.player.getBlockZ()), minecraft.player.getBlockZ()).above();
+                    MutableComponent weatherType;
+
+                    if (minecraft.level.isRainingAt(highestPos)) {
+                        if (minecraft.level.isThundering()) weatherType = Component.translatable("gui.chrysalis.weather.thundering");
+                        else weatherType = Component.translatable("gui.chrysalis.weather.raining");
+                    } else {
+                        if (minecraft.level.isRaining() && biome.value().getPrecipitationAt(highestPos) == Biome.Precipitation.SNOW) weatherType = Component.translatable("gui.chrysalis.weather.snowing");
+                        else weatherType = Component.translatable("gui.chrysalis.weather.clear");
+                    }
+
+                    cir.getReturnValue().add(Component.translatable("gui.interfaced.item.environment_detector.weather", weatherType.withStyle(ChatFormatting.BLUE)).withStyle(ChatFormatting.BLUE));
                 }
 
                 // endregion
