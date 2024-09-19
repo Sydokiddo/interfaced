@@ -8,7 +8,6 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
-import net.minecraft.client.gui.screens.social.PlayerEntry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.CommonComponents;
@@ -99,24 +98,24 @@ public class ICommonMethods {
         Minecraft minecraft = Minecraft.getInstance();
         if (minecraft.gui.getDebugOverlay().showDebugScreen()) return;
 
-        if (minecraft.getCameraEntity() != null) {
+        Player player = minecraft.player;
+        assert player != null;
 
-            Player player = minecraft.player;
-            assert player != null;
+        if (minecraft.getCameraEntity() != null && ItemHelper.hasItemInInventory(Items.COMPASS, player)) {
 
-            if (ItemHelper.hasItemInInventory(Items.COMPASS, player)) {
+            final int heightOffset = 5;
+            assert ChatFormatting.WHITE.getColor() != null;
+            final int white = ChatFormatting.WHITE.getColor();
 
-                BlockPos blockPos = minecraft.getCameraEntity().blockPosition();
-                int heightOffset = 5;
+            BlockPos blockPos = minecraft.getCameraEntity().blockPosition();
 
-                PoseStack poseStack = guiGraphics.pose();
-                poseStack.pushPose();
+            PoseStack poseStack = guiGraphics.pose();
+            poseStack.pushPose();
 
-                guiGraphics.drawString(minecraft.font, Component.translatable("gui.chrysalis.coordinates", blockPos.getX(), blockPos.getY(), blockPos.getZ()), 5, heightOffset, PlayerEntry.PLAYERNAME_COLOR, true);
-                guiGraphics.drawString(minecraft.font, Component.translatable("gui.chrysalis.facing_direction", Component.translatable("gui.chrysalis.direction." + player.getDirection().getName())), 5, heightOffset + 10, PlayerEntry.PLAYERNAME_COLOR, true);
+            guiGraphics.drawString(minecraft.font, Component.translatable("gui.chrysalis.coordinates", blockPos.getX(), blockPos.getY(), blockPos.getZ()), 5, heightOffset, white, true);
+            guiGraphics.drawString(minecraft.font, Component.translatable("gui.chrysalis.facing_direction", Component.translatable("gui.chrysalis.direction." + player.getDirection().getName())), 5, heightOffset + 10, white, true);
 
-                poseStack.popPose();
-            }
+            poseStack.popPose();
         }
     }
 
