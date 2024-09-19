@@ -13,11 +13,16 @@ import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.block.NoteBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.sydokiddo.chrysalis.Chrysalis;
 import net.sydokiddo.interfaced.Interfaced;
 import net.sydokiddo.interfaced.registry.items.ModItems;
 import net.sydokiddo.interfaced.registry.misc.ICommonMethods;
 import net.sydokiddo.interfaced.registry.misc.util.EnvironmentDetectorUsedPayload;
+import net.sydokiddo.interfaced.registry.misc.util.NoteBlockPlayedPayload;
 import java.util.Objects;
 
 @Environment(EnvType.CLIENT)
@@ -65,6 +70,23 @@ public class InterfacedClient implements ClientModInitializer {
                     Minecraft.getInstance().gui.setOverlayMessage(component, false);
                     Minecraft.getInstance().getNarrator().sayNow(component);
                 });
+            }));
+
+            ClientPlayNetworking.registerGlobalReceiver(NoteBlockPlayedPayload.TYPE, (payload, context) -> context.client().execute(() -> {
+
+                BlockHitResult lookedAtBlock = (BlockHitResult) context.client().hitResult;
+                assert lookedAtBlock != null;
+                BlockState blockState = Objects.requireNonNull(context.client().level).getBlockState(lookedAtBlock.getBlockPos());
+
+                if (lookedAtBlock.getType() == HitResult.Type.BLOCK && blockState.getBlock() instanceof NoteBlock) {
+
+                    int notePitch = blockState.getValue(NoteBlock.NOTE);
+                    if (notePitch == 25) notePitch = 0;
+                    Component messageToSend = Component.translatable("gui.interfaced.block.note_block.note_pitch", notePitch);
+
+                    Minecraft.getInstance().gui.setOverlayMessage(messageToSend, true);
+                    Minecraft.getInstance().getNarrator().sayNow(messageToSend);
+                }
             }));
 
             // endregion

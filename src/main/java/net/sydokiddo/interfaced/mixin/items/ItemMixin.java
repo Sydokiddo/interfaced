@@ -208,7 +208,7 @@ public class ItemMixin {
                     biome.unwrapKey().ifPresent(key -> {
                         Component biomeName = Component.translatable(Util.makeDescriptionId("biome", key.location()));
                         cir.getReturnValue().add(Component.translatable("gui.interfaced.item.environment_detector.biome", biomeName).withStyle(ChatFormatting.BLUE));
-                        cir.getReturnValue().add(Component.translatable("gui.interfaced.item.environment_detector.biome_temperature", biome.value().getBaseTemperature()).withStyle(ChatFormatting.BLUE));
+                        cir.getReturnValue().add(Component.translatable("gui.interfaced.item.environment_detector.biome_temperature", BigDecimal.valueOf(biome.value().getBaseTemperature()).setScale(1, RoundingMode.DOWN).stripTrailingZeros()).withStyle(ChatFormatting.BLUE));
                     });
 
                     BlockPos highestPos = new BlockPos(minecraft.player.getBlockX(), minecraft.level.getHeight(Heightmap.Types.WORLD_SURFACE, minecraft.player.getBlockX(), minecraft.player.getBlockZ()), minecraft.player.getBlockZ()).above();

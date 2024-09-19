@@ -11,6 +11,7 @@ import net.sydokiddo.interfaced.registry.misc.ModCreativeModeTabs;
 import net.sydokiddo.interfaced.registry.misc.ModLootTableModifiers;
 import net.sydokiddo.interfaced.registry.misc.ModSoundEvents;
 import net.sydokiddo.interfaced.registry.misc.util.EnvironmentDetectorUsedPayload;
+import net.sydokiddo.interfaced.registry.misc.util.NoteBlockPlayedPayload;
 
 public class InterfacedRegistry {
 
@@ -22,6 +23,7 @@ public class InterfacedRegistry {
         ModLootTableModifiers.modifyLootTables();
 
         PayloadTypeRegistry.playS2C().register(EnvironmentDetectorUsedPayload.TYPE, EnvironmentDetectorUsedPayload.CODEC);
+        PayloadTypeRegistry.playS2C().register(NoteBlockPlayedPayload.TYPE, NoteBlockPlayedPayload.CODEC);
 
         TradeOfferHelper.registerWanderingTraderOffers(1, (trades) -> {
             trades.add((entity, random) -> new MerchantOffer(new ItemCost(Items.EMERALD, 2), Items.MAP.getDefaultInstance(), 4, 1, 0));

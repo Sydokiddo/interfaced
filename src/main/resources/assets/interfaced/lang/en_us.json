@@ -23,6 +23,8 @@
   "gui.interfaced.item.food.effect_chance": "%s [%d%%]",
   "gui.interfaced.item.cake.for_each_slice": "For Each Slice:",
 
+  "gui.interfaced.block.note_block.note_pitch": "Note Pitch: %s",
+
   "subtitles.item.environment_detector.use": "Environment Detector clicks",
 
   "tag.item.interfaced.food_tooltip_blacklisted": "Food Tooltip Blacklisted",

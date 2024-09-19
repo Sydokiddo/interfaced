@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "PlayerManagerMixin",
+    "blocks.NoteBlockMixin",
     "items.CrossbowItemMixin",
     "items.ItemMixin",
     "items.ItemMixin$ItemStackMixin",
