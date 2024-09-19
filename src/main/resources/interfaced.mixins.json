@@ -8,7 +8,8 @@
     "items.CrossbowItemMixin",
     "items.ItemMixin",
     "items.ItemMixin$ItemStackMixin",
-    "items.MapItemMixin"
+    "items.MapItemMixin",
+    "items.ShieldItemMixin"
   ],
   "client": [],
   "injectors": {
