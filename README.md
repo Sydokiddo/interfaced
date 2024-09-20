@@ -1,6 +1,6 @@
 ![github_icon](images/mod_icon.png)
 
-## **About Interfaced]**
+## **About Interfaced**
 
 Interfaced is a small Minecraft mod for [Fabric](https://fabricmc.net) 1.21.1 that improves upon various GUIs in the game. This mod aims to come up with more elegant solutions to the way information is displayed, from replacements for unimmersive debug menus and more!
 
