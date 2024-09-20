@@ -10,7 +10,8 @@
     "items.ItemMixin",
     "items.ItemMixin$ItemStackMixin",
     "items.MapItemMixin",
-    "items.ShieldItemMixin"
+    "items.ShieldItemMixin",
+    "misc.GameRulesMixin"
   ],
   "client": [],
   "injectors": {
