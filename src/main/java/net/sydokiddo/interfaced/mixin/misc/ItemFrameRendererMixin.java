@@ -48,13 +48,13 @@ public abstract class ItemFrameRendererMixin extends EntityRenderer<ItemFrame> {
     }
 
     @Inject(method = "renderNameTag(Lnet/minecraft/world/entity/decoration/ItemFrame;Lnet/minecraft/network/chat/Component;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;IF)V", at = @At("HEAD"), cancellable = true)
-    private void interfaced$renderClockInItemFrame(ItemFrame itemFrame, Component component, PoseStack poseStack, MultiBufferSource multiBufferSource, int x, float y, CallbackInfo info) {
+    private void interfaced$renderClockInItemFrame(ItemFrame itemFrame, Component component, PoseStack poseStack, MultiBufferSource multiBufferSource, int light, float tickDelta, CallbackInfo info) {
 
         if (this.isUnnamedClock(itemFrame)) {
 
             info.cancel();
             if (this.entityRenderDispatcher.distanceToSqr(itemFrame) > 4096.0D) return;
-            Vec3 vec3 = itemFrame.getAttachments().getNullable(EntityAttachment.NAME_TAG, 0, itemFrame.getViewYRot(y));
+            Vec3 vec3 = itemFrame.getAttachments().getNullable(EntityAttachment.NAME_TAG, 0, itemFrame.getViewYRot(tickDelta));
 
             if (vec3 != null && Minecraft.getInstance().level != null) {
 
@@ -64,9 +64,9 @@ public abstract class ItemFrameRendererMixin extends EntityRenderer<ItemFrame> {
                 poseStack.mulPose(this.entityRenderDispatcher.cameraOrientation());
                 poseStack.scale(0.025F, -0.025F, 0.025F);
 
+                Matrix4f matrix4f = poseStack.last().pose();
                 float opacity = Minecraft.getInstance().options.getBackgroundOpacity(0.25F);
                 int finalOpacity = (int) (opacity * 255.0F) << 24;
-                Matrix4f matrix4f = poseStack.last().pose();
 
                 int maxHour = ICommonMethods.militaryTime ? 24 : 12;
                 long time = Minecraft.getInstance().level.getDayTime();
@@ -78,17 +78,17 @@ public abstract class ItemFrameRendererMixin extends EntityRenderer<ItemFrame> {
                 else hourOutput = hour - maxHour;
                 if (hourOutput == 0) hourOutput = maxHour;
 
-                int xPos = (-this.getFont().width(component) / 2) + 8;
-                int xPosOffset = xPos + 16;
+                Font font = this.getFont();
+                int xPos = -32;
                 int yPos = -10;
 
                 ChatFormatting chatFormatting = ChatFormatting.WHITE;
 
-                Minecraft.getInstance().font.drawInBatch(ICommonMethods.getClockComponent(hourOutput, hour, minute, chatFormatting), xPos, yPos, 0, false, matrix4f, multiBufferSource, Font.DisplayMode.SEE_THROUGH, finalOpacity, x);
-                Minecraft.getInstance().font.drawInBatch(ICommonMethods.getClockComponent(hourOutput, hour, minute, chatFormatting), xPos, yPos, -1, false, matrix4f, multiBufferSource, Font.DisplayMode.NORMAL, 0, x);
+                font.drawInBatch(ICommonMethods.getClockComponent(hourOutput, hour, minute, chatFormatting), xPos, yPos, 0, false, matrix4f, multiBufferSource, Font.DisplayMode.SEE_THROUGH, finalOpacity, light);
+                font.drawInBatch(ICommonMethods.getClockComponent(hourOutput, hour, minute, chatFormatting), xPos, yPos, -1, false, matrix4f, multiBufferSource, Font.DisplayMode.NORMAL, 0, light);
 
-                Minecraft.getInstance().font.drawInBatch(ICommonMethods.getDayComponent(chatFormatting), xPosOffset, 0, 0, false, matrix4f, multiBufferSource, Font.DisplayMode.SEE_THROUGH, finalOpacity, x);
-                Minecraft.getInstance().font.drawInBatch(ICommonMethods.getDayComponent(chatFormatting), xPosOffset, 0, -1, false, matrix4f, multiBufferSource, Font.DisplayMode.NORMAL, 0, x);
+                font.drawInBatch(ICommonMethods.getDayComponent(chatFormatting), xPos, 0, 0, false, matrix4f, multiBufferSource, Font.DisplayMode.SEE_THROUGH, finalOpacity, light);
+                font.drawInBatch(ICommonMethods.getDayComponent(chatFormatting), xPos, 0, -1, false, matrix4f, multiBufferSource, Font.DisplayMode.NORMAL, 0, light);
 
                 poseStack.popPose();
             }
