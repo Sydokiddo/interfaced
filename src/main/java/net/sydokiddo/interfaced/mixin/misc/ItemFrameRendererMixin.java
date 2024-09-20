@@ -79,6 +79,7 @@ public abstract class ItemFrameRendererMixin extends EntityRenderer<ItemFrame> {
                 if (hourOutput == 0) hourOutput = maxHour;
 
                 int xPos = (-Minecraft.getInstance().font.width(component) / 2);
+                int xPosOffset = xPos + 16;
                 int yPos = -10;
 
                 ChatFormatting chatFormatting = ChatFormatting.WHITE;
@@ -86,8 +87,8 @@ public abstract class ItemFrameRendererMixin extends EntityRenderer<ItemFrame> {
                 Minecraft.getInstance().font.drawInBatch(ICommonMethods.getClockComponent(hourOutput, hour, minute, chatFormatting), xPos, yPos, 0, false, matrix4f, multiBufferSource, Font.DisplayMode.SEE_THROUGH, finalOpacity, x);
                 Minecraft.getInstance().font.drawInBatch(ICommonMethods.getClockComponent(hourOutput, hour, minute, chatFormatting), xPos, yPos, -1, false, matrix4f, multiBufferSource, Font.DisplayMode.NORMAL, 0, x);
 
-                Minecraft.getInstance().font.drawInBatch(ICommonMethods.getDayComponent(chatFormatting), xPos, 0, 0, false, matrix4f, multiBufferSource, Font.DisplayMode.SEE_THROUGH, finalOpacity, x);
-                Minecraft.getInstance().font.drawInBatch(ICommonMethods.getDayComponent(chatFormatting), xPos, 0, -1, false, matrix4f, multiBufferSource, Font.DisplayMode.NORMAL, 0, x);
+                Minecraft.getInstance().font.drawInBatch(ICommonMethods.getDayComponent(chatFormatting), xPosOffset, 0, 0, false, matrix4f, multiBufferSource, Font.DisplayMode.SEE_THROUGH, finalOpacity, x);
+                Minecraft.getInstance().font.drawInBatch(ICommonMethods.getDayComponent(chatFormatting), xPosOffset, 0, -1, false, matrix4f, multiBufferSource, Font.DisplayMode.NORMAL, 0, x);
 
                 poseStack.popPose();
             }
