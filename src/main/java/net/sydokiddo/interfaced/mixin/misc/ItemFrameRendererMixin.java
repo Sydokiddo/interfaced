@@ -78,7 +78,7 @@ public abstract class ItemFrameRendererMixin extends EntityRenderer<ItemFrame> {
                 else hourOutput = hour - maxHour;
                 if (hourOutput == 0) hourOutput = maxHour;
 
-                int xPos = (-Minecraft.getInstance().font.width(component) / 2) - 5;
+                int xPos = (-this.getFont().width(component) / 2) + 8;
                 int xPosOffset = xPos + 16;
                 int yPos = -10;
 
