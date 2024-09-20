@@ -2,6 +2,7 @@ package net.sydokiddo.interfaced.mixin.items;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.Minecraft;
 import net.minecraft.world.inventory.tooltip.TooltipComponent;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -21,6 +22,7 @@ public class MapItemMixin extends Item {
     @Environment(EnvType.CLIENT)
     @Override
     public @NotNull Optional<TooltipComponent> getTooltipImage(@NotNull ItemStack itemStack) {
+        if (MapItem.getSavedData(itemStack, Minecraft.getInstance().level) == null) return super.getTooltipImage(itemStack);
         return Optional.of(new MapTooltipComponent(itemStack));
     }
 }
