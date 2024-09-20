@@ -13,7 +13,9 @@
     "items.ShieldItemMixin",
     "misc.GameRulesMixin"
   ],
-  "client": [],
+  "client": [
+    "misc.ItemFrameRendererMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   }

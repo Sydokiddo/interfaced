@@ -37,5 +37,11 @@
     "another-mod": "*"
   },
   "breaks": {},
-  "custom": {}
+  "custom": {
+    "modmenu": {
+      "links": {
+        "gui.interfaced.wiki": "https://github.com/Sydokiddo/interfaced/wiki"
+      }
+    }
+  }
 }

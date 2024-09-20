@@ -162,39 +162,21 @@ public class ItemMixin {
 
                 if (itemStack.is(Items.CLOCK)) {
 
-                    boolean militaryTime = false;
-                    int maxHour = militaryTime ? 24 : 12;
+                    int maxHour = ICommonMethods.militaryTime ? 24 : 12;
 
                     long time = minecraft.level.getDayTime();
                     int hour = (int) ((time / 1000L + 6L) % 24L);
                     int minute = (int) (60L * (time % 1000L) / 1000L);
 
                     int hourOutput;
-                    Component hourSystem = CommonComponents.EMPTY;
-
                     if (hour <= maxHour) hourOutput = hour;
                     else hourOutput = hour - maxHour;
                     if (hourOutput == 0) hourOutput = maxHour;
 
-                    if (!militaryTime) {
-                        if (hour >= 12) hourSystem = Component.translatable("gui.interfaced.item.clock.hour_pm");
-                        else hourSystem = Component.translatable("gui.interfaced.item.clock.hour_am");
-                    }
+                    ChatFormatting chatFormatting = ChatFormatting.BLUE;
 
-                    String standardTimeString = "gui.interfaced.item.clock.standard_time";
-                    String militaryTimeString = "gui.interfaced.item.clock.military_time";
-
-                    String clockNumberFormat = (minute < 10 ? "0" : "") + minute;
-
-                    if (!minecraft.level.dimensionType().hasFixedTime()) {
-                        if (militaryTime) cir.getReturnValue().add(Component.translatable(militaryTimeString, hourOutput, clockNumberFormat).withStyle(ChatFormatting.BLUE));
-                        else cir.getReturnValue().add(Component.translatable(standardTimeString, hourOutput, clockNumberFormat, hourSystem).withStyle(ChatFormatting.BLUE));
-                    } else {
-                        if (militaryTime) cir.getReturnValue().add(Component.translatable(militaryTimeString, "§k00", "§k00").withStyle(ChatFormatting.OBFUSCATED).withStyle(ChatFormatting.BLUE));
-                        else cir.getReturnValue().add(Component.translatable(standardTimeString, "§k00", "§k00", hourSystem.copy().withStyle(ChatFormatting.OBFUSCATED)).withStyle(ChatFormatting.BLUE));
-                    }
-
-                    cir.getReturnValue().add(Component.translatable("gui.interfaced.item.clock.day", minecraft.level.getDayTime() / 24000L).withStyle(ChatFormatting.BLUE));
+                    cir.getReturnValue().add(ICommonMethods.getClockComponent(hourOutput, hour, minute, chatFormatting));
+                    cir.getReturnValue().add(ICommonMethods.getDayComponent(chatFormatting));
                 }
 
                 // endregion

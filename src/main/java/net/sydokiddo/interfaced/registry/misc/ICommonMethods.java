@@ -125,5 +125,39 @@ public class ICommonMethods {
         return null;
     }
 
+    public static boolean militaryTime = false;
+
+    @SuppressWarnings("all")
+    public static Component getClockComponent(int hourOutput, int hour, int minute, ChatFormatting chatFormatting) {
+
+        Minecraft minecraft = Minecraft.getInstance();
+        assert minecraft.level != null;
+        Component hourSystem = CommonComponents.EMPTY;
+
+        if (!militaryTime) {
+            if (hour >= 12) hourSystem = Component.translatable("gui.interfaced.item.clock.hour_pm");
+            else hourSystem = Component.translatable("gui.interfaced.item.clock.hour_am");
+        }
+
+        String standardTimeString = "gui.interfaced.item.clock.standard_time";
+        String militaryTimeString = "gui.interfaced.item.clock.military_time";
+
+        String clockNumberFormat = (minute < 10 ? "0" : "") + minute;
+
+        if (!minecraft.level.dimensionType().hasFixedTime()) {
+            if (militaryTime) return Component.translatable(militaryTimeString, hourOutput, clockNumberFormat).withStyle(chatFormatting);
+            else return Component.translatable(standardTimeString, hourOutput, clockNumberFormat, hourSystem).withStyle(chatFormatting);
+        } else {
+            if (militaryTime) return Component.translatable(militaryTimeString, "§k00", "§k00").withStyle(ChatFormatting.OBFUSCATED).withStyle(chatFormatting);
+            else return Component.translatable(standardTimeString, "§k00", "§k00", hourSystem.copy().withStyle(ChatFormatting.OBFUSCATED)).withStyle(chatFormatting);
+        }
+    }
+
+    public static Component getDayComponent(ChatFormatting chatFormatting) {
+        Minecraft minecraft = Minecraft.getInstance();
+        assert minecraft.level != null;
+        return Component.translatable("gui.interfaced.item.clock.day", minecraft.level.getDayTime() / 24000L).withStyle(chatFormatting);
+    }
+
     // endregion
 }
