@@ -6,6 +6,7 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.GlobalPos;
 import net.minecraft.core.Holder;
@@ -13,6 +14,9 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffectUtil;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
@@ -39,11 +43,13 @@ public class ItemMixin {
     @Inject(method = "appendHoverText", at = @At("HEAD"))
     private void interfaced$addItemTooltipsBeforeEnchantments(ItemStack itemStack, Item.TooltipContext tooltipContext, List<Component> list, TooltipFlag tooltipFlag, CallbackInfo info) {
 
-        // Durability Tooltip
+        // region Durability Tooltip
 
         ICommonMethods.addItemDurabilityTooltip(itemStack, list, tooltipFlag);
 
-        // Food Tooltips
+        // endregion
+
+        // region Food Properties Tooltip
 
         if (!FabricLoader.getInstance().isModLoaded("appleskin") && !itemStack.is(ModTags.FOOD_TOOLTIP_BLACKLISTED)) {
 
@@ -73,6 +79,22 @@ public class ItemMixin {
                 if (itemStack.getItem() instanceof SuspiciousStewItem && tooltipFlag.isCreative()) list.add(CommonComponents.EMPTY);
             }
         }
+
+        // endregion
+
+        // region Spectral Arrow Effect Tooltip
+
+        if (!FabricLoader.getInstance().isModLoaded("monster_mash")) {
+
+            ClientLevel clientLevel = Minecraft.getInstance().level;
+
+            if (clientLevel != null && itemStack.is(Items.SPECTRAL_ARROW)) {
+                MobEffectInstance glowing = new MobEffectInstance(MobEffects.GLOWING, 200, 0);
+                list.add(Component.translatable("potion.withDuration", Component.translatable(glowing.getDescriptionId()), MobEffectUtil.formatDuration(glowing, 1.0F, clientLevel.tickRateManager().tickrate())).withStyle(ChatFormatting.BLUE));
+            }
+        }
+
+        // endregion
     }
 
     @SuppressWarnings("all")
