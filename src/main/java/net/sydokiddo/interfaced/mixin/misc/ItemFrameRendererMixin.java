@@ -49,6 +49,7 @@ public abstract class ItemFrameRendererMixin extends EntityRenderer<ItemFrame> {
 
     @Inject(method = "renderNameTag(Lnet/minecraft/world/entity/decoration/ItemFrame;Lnet/minecraft/network/chat/Component;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;IF)V", at = @At("HEAD"), cancellable = true)
     private void interfaced$renderClockInItemFrame(ItemFrame itemFrame, Component component, PoseStack poseStack, MultiBufferSource multiBufferSource, int x, float y, CallbackInfo info) {
+
         if (this.isUnnamedClock(itemFrame)) {
 
             info.cancel();
