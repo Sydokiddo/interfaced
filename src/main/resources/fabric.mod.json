@@ -8,7 +8,11 @@
   "authors": [
     "Sydokiddo"
   ],
-  "contact": {},
+  "contact": {
+    "homepage": "https://modrinth.com/mod/interfaced",
+    "issues": "https://github.com/Sydokiddo/interfaced/issues",
+    "sources": "https://github.com/Sydokiddo/interfaced"
+  },
   "license": "MIT",
   "icon": "assets/interfaced/icon.png",
   "accessWidener": "interfaced.accesswidener",
