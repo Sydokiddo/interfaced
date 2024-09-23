@@ -8,6 +8,7 @@ import dev.isxander.yacl3.api.controller.ControllerBuilder;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.sydokiddo.interfaced.registry.misc.ICommonMethods;
 
 @Environment(EnvType.CLIENT)
@@ -22,6 +23,11 @@ public class ModMenuCompatibility implements ModMenuApi {
         return BooleanControllerBuilder.create(option).valueFormatter(value -> value ? Component.translatable(yes) : Component.translatable(no)).coloured(colored);
     }
 
+    private Component groupNameWithIcon(String translationString, MutableComponent icon) {
+        ICommonMethods.setConfigIconsFont(icon);
+        return Component.translatable(translationString, icon, icon);
+    }
+
     @Override
     public ConfigScreenFactory<?> getModConfigScreenFactory() {
         return parentScreen -> YetAnotherConfigLib.createBuilder().title(Component.translatable("mod.interfaced"))
@@ -30,7 +36,7 @@ public class ModMenuCompatibility implements ModMenuApi {
 
                 // region Compass Config
 
-                .group(OptionGroup.createBuilder().name(Component.translatable("gui.interfaced.config.compass")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.compass.description"))).collapsed(true)
+                .group(OptionGroup.createBuilder().name(this.groupNameWithIcon("gui.interfaced.config.compass", ICommonMethods.COMPASS_ICON)).description(OptionDescription.of(Component.translatable("gui.interfaced.config.compass.description"))).collapsed(true)
 
                     .option(Option.<Boolean>createBuilder()
                     .name(Component.translatable("gui.interfaced.config.compass.gui_information")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.compass.gui_information.description")))
@@ -62,7 +68,7 @@ public class ModMenuCompatibility implements ModMenuApi {
 
                 // region Clock Config
 
-                .group(OptionGroup.createBuilder().name(Component.translatable("gui.interfaced.config.clock")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.clock.description"))).collapsed(true)
+                .group(OptionGroup.createBuilder().name(this.groupNameWithIcon("gui.interfaced.config.clock", ICommonMethods.CLOCK_ICON)).description(OptionDescription.of(Component.translatable("gui.interfaced.config.clock.description"))).collapsed(true)
 
                     .option(Option.<Boolean>createBuilder()
                     .name(Component.translatable("gui.interfaced.config.clock.item_frame_rendering")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.clock.item_frame_rendering.description")))
@@ -88,7 +94,7 @@ public class ModMenuCompatibility implements ModMenuApi {
 
                 // region Map Config
 
-                .group(OptionGroup.createBuilder().name(Component.translatable("gui.interfaced.config.map")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.map.description"))).collapsed(true)
+                .group(OptionGroup.createBuilder().name(this.groupNameWithIcon("gui.interfaced.config.map", ICommonMethods.MAP_ICON)).description(OptionDescription.of(Component.translatable("gui.interfaced.config.map.description"))).collapsed(true)
 
                     .option(Option.<Boolean>createBuilder()
                     .name(Component.translatable("gui.interfaced.config.map.map_image_tooltip")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.map.map_image_tooltip.description")))
@@ -102,7 +108,7 @@ public class ModMenuCompatibility implements ModMenuApi {
 
                 // region Environment Detector Config
 
-                .group(OptionGroup.createBuilder().name(Component.translatable("gui.interfaced.config.environment_detector")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.environment_detector.description"))).collapsed(true)
+                .group(OptionGroup.createBuilder().name(this.groupNameWithIcon("gui.interfaced.config.environment_detector", ICommonMethods.ENVIRONMENT_DETECTOR_ICON)).description(OptionDescription.of(Component.translatable("gui.interfaced.config.environment_detector.description"))).collapsed(true)
 
                     .option(Option.<Boolean>createBuilder()
                     .name(Component.translatable("gui.interfaced.config.environment_detector.item_interaction")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.environment_detector.item_interaction.description")))
@@ -122,7 +128,7 @@ public class ModMenuCompatibility implements ModMenuApi {
 
                 // region Miscellaneous Config
 
-                .group(OptionGroup.createBuilder().name(Component.translatable("gui.interfaced.config.miscellaneous")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.miscellaneous.description"))).collapsed(true)
+                .group(OptionGroup.createBuilder().name(this.groupNameWithIcon("gui.interfaced.config.miscellaneous", ICommonMethods.MISCELLANEOUS_ICON)).description(OptionDescription.of(Component.translatable("gui.interfaced.config.miscellaneous.description"))).collapsed(true)
 
                     .option(Option.<Boolean>createBuilder()
                     .name(Component.translatable("gui.interfaced.config.miscellaneous.durability_tooltip")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.miscellaneous.durability_tooltip.description")))
@@ -154,7 +160,7 @@ public class ModMenuCompatibility implements ModMenuApi {
 
                 // region Experimental Config
 
-                .group(OptionGroup.createBuilder().name(Component.translatable("gui.interfaced.config.experimental")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.experimental.description"))).collapsed(true)
+                .group(OptionGroup.createBuilder().name(this.groupNameWithIcon("gui.interfaced.config.experimental", ICommonMethods.EXPERIMENTAL_ICON)).description(OptionDescription.of(Component.translatable("gui.interfaced.config.experimental.description"))).collapsed(true)
 
                     .option(Option.<Boolean>createBuilder()
                     .name(Component.translatable("gui.interfaced.config.experimental.change_reducedDebugInfo_default_value")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.experimental.change_reducedDebugInfo_default_value.description")))

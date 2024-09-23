@@ -27,6 +27,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.sydokiddo.chrysalis.misc.util.helpers.ItemHelper;
+import net.sydokiddo.interfaced.Interfaced;
 import net.sydokiddo.interfaced.misc.config.ModConfig;
 import net.sydokiddo.interfaced.misc.util.MapTooltipComponent;
 import org.jetbrains.annotations.NotNull;
@@ -41,6 +42,23 @@ public class ICommonMethods {
     public static final boolean
         HAS_APPLESKIN = FabricLoader.getInstance().isModLoaded("appleskin")
     ;
+
+    // endregion
+
+    // region Fonts
+
+    public static final MutableComponent
+        COMPASS_ICON = Component.translatable("gui.interfaced.config.icon.compass"),
+        CLOCK_ICON = Component.translatable("gui.interfaced.config.icon.clock"),
+        MAP_ICON = Component.translatable("gui.interfaced.config.icon.map"),
+        ENVIRONMENT_DETECTOR_ICON = Component.translatable("gui.interfaced.config.icon.environment_detector"),
+        MISCELLANEOUS_ICON = Component.translatable("gui.interfaced.config.icon.miscellaneous"),
+        EXPERIMENTAL_ICON = Component.translatable("gui.interfaced.config.icon.experimental")
+    ;
+
+    public static void setConfigIconsFont(MutableComponent mutableComponent) {
+        mutableComponent.setStyle(mutableComponent.getStyle().withFont(Interfaced.id("config_icons")));
+    }
 
     // endregion
 

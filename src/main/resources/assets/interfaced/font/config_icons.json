@@ -1,0 +1,64 @@
+{
+  "providers": [
+    {
+      "type": "space",
+      "advances": {
+        " ": 4
+      }
+    },
+    {
+      "type": "bitmap",
+      "file": "interfaced:gui/sprites/config_icons/compass.png",
+      "ascent": 9,
+      "height": 9,
+      "chars": [
+        "\ua000"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "interfaced:gui/sprites/config_icons/clock.png",
+      "ascent": 9,
+      "height": 9,
+      "chars": [
+        "\ua001"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "interfaced:gui/sprites/config_icons/map.png",
+      "ascent": 9,
+      "height": 9,
+      "chars": [
+        "\ua002"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "interfaced:gui/sprites/config_icons/environment_detector.png",
+      "ascent": 9,
+      "height": 9,
+      "chars": [
+        "\ua003"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "interfaced:gui/sprites/config_icons/miscellaneous.png",
+      "ascent": 9,
+      "height": 9,
+      "chars": [
+        "\ua004"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "interfaced:gui/sprites/config_icons/experimental.png",
+      "ascent": 9,
+      "height": 9,
+      "chars": [
+        "\ua005"
+      ]
+    }
+  ]
+}

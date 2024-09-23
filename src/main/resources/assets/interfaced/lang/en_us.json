@@ -33,7 +33,14 @@
   "gui.interfaced.config": "Interfaced Config",
   "gui.interfaced.config.description": "Configure the way various mechanics function in this mod.",
 
-  "gui.interfaced.config.compass": "Compasses",
+  "gui.interfaced.config.icon.compass": "\ua000",
+  "gui.interfaced.config.icon.clock": "\ua001",
+  "gui.interfaced.config.icon.map": "\ua002",
+  "gui.interfaced.config.icon.environment_detector": "\ua003",
+  "gui.interfaced.config.icon.miscellaneous": "\ua004",
+  "gui.interfaced.config.icon.experimental": "\ua005",
+
+  "gui.interfaced.config.compass": "%s Compasses %s",
   "gui.interfaced.config.compass.description": "Options for the functionality of Compasses.",
 
   "gui.interfaced.config.compass.gui_information": "GUI Information",
@@ -45,7 +52,7 @@
   "gui.interfaced.config.compass.recovery_compass_tooltip": "Recovery Compass Tooltip",
   "gui.interfaced.config.compass.recovery_compass_tooltip.description": "The player's most recent death location and dimension will be displayed on a tooltip on Recovery Compasses.",
 
-  "gui.interfaced.config.clock": "Clocks",
+  "gui.interfaced.config.clock": "%s Clocks %s",
   "gui.interfaced.config.clock.description": "Options for the functionality of Clocks.",
   "gui.interfaced.config.clock.item_frame_rendering": "Item Frame Rendering",
   "gui.interfaced.config.clock.item_frame_rendering.description": "The world's current time of day and day counter will be displayed above Clocks that are in Item Frames similarly to name tags.",
@@ -56,19 +63,19 @@
   "gui.interfaced.config.clock.time_format.standard_time": "Standard Time",
   "gui.interfaced.config.clock.time_format.military_time": "Military Time",
 
-  "gui.interfaced.config.map": "Maps",
+  "gui.interfaced.config.map": "%s Maps %s",
   "gui.interfaced.config.map.description": "Options for the functionality of Maps.",
   "gui.interfaced.config.map.map_image_tooltip": "Map Image Tooltip",
   "gui.interfaced.config.map.map_image_tooltip.description": "Maps will display themselves visually on a tooltip while being hovered over.",
 
-  "gui.interfaced.config.environment_detector": "Environment Detectors",
+  "gui.interfaced.config.environment_detector": "%s Environment Detectors %s",
   "gui.interfaced.config.environment_detector.description": "Options for the functionality of Environment Detectors.",
   "gui.interfaced.config.environment_detector.item_interaction": "Item Interaction",
   "gui.interfaced.config.environment_detector.item_interaction.description": "Environment Detectors can be right-clicked with to display the current biome on a HUD overlay.",
   "gui.interfaced.config.environment_detector.environment_detector_tooltip": "Environment Detector Tooltip",
   "gui.interfaced.config.environment_detector.environment_detector_tooltip.description": "The current biome's name, temperature, and weather will be displayed on a tooltip on Environment Detectors.",
 
-  "gui.interfaced.config.miscellaneous": "Miscellaneous",
+  "gui.interfaced.config.miscellaneous": "%s Miscellaneous %s",
   "gui.interfaced.config.miscellaneous.description": "Miscellaneous configurable options that don't fit into any other listed categories.",
   "gui.interfaced.config.miscellaneous.durability_tooltip": "Durability Tooltip",
   "gui.interfaced.config.miscellaneous.durability_tooltip.description": "Any item that has durability will display a durability tooltip when it is damaged.",
@@ -79,7 +86,7 @@
   "gui.interfaced.config.miscellaneous.note_block_note_hud": "Note Block Note HUD",
   "gui.interfaced.config.miscellaneous.note_block_note_hud.description": "Note Blocks will display their currently played note on a HUD overlay when interacted with.",
 
-  "gui.interfaced.config.experimental": "Experimental",
+  "gui.interfaced.config.experimental": "%s Experimental %s",
   "gui.interfaced.config.experimental.description": "Experimental options for a bit more intrusive mechanics.",
   "gui.interfaced.config.experimental.change_reducedDebugInfo_default_value": "Change reducedDebugInfo Default Value",
   "gui.interfaced.config.experimental.change_reducedDebugInfo_default_value.description": "Changes the default value of the reducedDebugInfo game rule to encourage using the mod's replacements for the F3 menu. May require restarting!",
