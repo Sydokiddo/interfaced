@@ -81,8 +81,13 @@ public class ItemMixin {
         }
 
         // endregion
+    }
 
-        // region Spectral Arrow Effect Tooltip
+    @Environment(EnvType.CLIENT)
+    @Inject(method = "appendHoverText", at = @At("HEAD"))
+    private void interfaced$addClientTooltips(ItemStack itemStack, Item.TooltipContext tooltipContext, List<Component> list, TooltipFlag tooltipFlag, CallbackInfo info) {
+
+        // region Spectral Arrow Tooltip
 
         if (ModConfig.spectralArrowTooltip) {
 
