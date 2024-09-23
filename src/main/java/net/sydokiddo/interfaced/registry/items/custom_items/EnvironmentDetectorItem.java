@@ -10,8 +10,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.sydokiddo.interfaced.misc.config.ModConfig;
 import net.sydokiddo.interfaced.registry.misc.ModSoundEvents;
-import net.sydokiddo.interfaced.registry.misc.util.EnvironmentDetectorUsedPayload;
+import net.sydokiddo.interfaced.misc.util.EnvironmentDetectorUsedPayload;
 import org.jetbrains.annotations.NotNull;
 
 public class EnvironmentDetectorItem extends Item {
@@ -22,6 +23,8 @@ public class EnvironmentDetectorItem extends Item {
 
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
+
+        if (!ModConfig.environmentDetectorItemInteraction) return super.use(level, player, interactionHand);
 
         player.playSound(ModSoundEvents.ENVIRONMENT_DETECTOR_USE, 1.0F, 1.0F + level.getRandom().nextFloat() * 0.2F);
         player.gameEvent(GameEvent.ITEM_INTERACT_START);

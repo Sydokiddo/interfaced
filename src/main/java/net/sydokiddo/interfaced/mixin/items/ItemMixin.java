@@ -24,6 +24,7 @@ import net.minecraft.world.item.component.LodestoneTracker;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.sydokiddo.chrysalis.misc.util.helpers.ItemHelper;
+import net.sydokiddo.interfaced.misc.config.ModConfig;
 import net.sydokiddo.interfaced.registry.items.ModItems;
 import net.sydokiddo.interfaced.registry.misc.ICommonMethods;
 import net.sydokiddo.interfaced.registry.misc.ModTags;
@@ -118,40 +119,28 @@ public class ItemMixin {
                 if (itemStack.is(Items.COMPASS)) {
 
                     boolean isLodestoneCompass = this.copy().has(DataComponents.LODESTONE_TRACKER);
-                    LodestoneTracker lodestoneTracker = this.copy().getComponents().get(DataComponents.LODESTONE_TRACKER);
 
-                    int x = 0;
-                    int y = 0;
-                    int z = 0;
+                    if (isLodestoneCompass && ModConfig.lodestoneCompassTooltip) {
 
-                    cir.getReturnValue().add(CommonComponents.EMPTY);
+                        LodestoneTracker lodestoneTracker = this.copy().getComponents().get(DataComponents.LODESTONE_TRACKER);
 
-                    if (isLodestoneCompass) {
-
+                        cir.getReturnValue().add(CommonComponents.EMPTY);
                         cir.getReturnValue().add(Component.translatable("gui.interfaced.item.compass.lodestone_location").withStyle(ChatFormatting.GRAY));
 
-                        if (lodestoneTracker != null && lodestoneTracker.target().isPresent()) {
+                        if (lodestoneTracker != null && lodestoneTracker.target().isEmpty()) {
+                            ItemHelper.addNullTooltip(cir.getReturnValue());
+                        } else {
                             BlockPos blockPos = lodestoneTracker.target().get().pos();
-                            x = blockPos.getX();
-                            y = blockPos.getY();
-                            z = blockPos.getZ();
+                            ItemHelper.addCoordinatesTooltip(cir.getReturnValue(), blockPos.getX(), blockPos.getY(), blockPos.getZ());
+                            ItemHelper.addDimensionTooltip(cir.getReturnValue(), lodestoneTracker.target().get().dimension().location().toString());
                         }
 
-                    } else {
+                    } else if (!isLodestoneCompass && ModConfig.compassTooltip) {
 
+                        cir.getReturnValue().add(CommonComponents.EMPTY);
                         cir.getReturnValue().add(Component.translatable("gui.interfaced.item.compass.current_location").withStyle(ChatFormatting.GRAY));
-
-                        x = minecraft.player.getBlockX();
-                        y = minecraft.player.getBlockY();
-                        z = minecraft.player.getBlockZ();
-                    }
-
-                    if (isLodestoneCompass && lodestoneTracker != null && lodestoneTracker.target().isEmpty()) {
-                        ItemHelper.addNullTooltip(cir.getReturnValue());
-                    } else {
-                        ItemHelper.addCoordinatesTooltip(cir.getReturnValue(), x, y, z);
-                        if (isLodestoneCompass && lodestoneTracker != null) ItemHelper.addDimensionTooltip(cir.getReturnValue(), lodestoneTracker.target().get().dimension().location().toString());
-                        if (!isLodestoneCompass) ItemHelper.addDirectionTooltip(cir.getReturnValue(), minecraft);
+                        ItemHelper.addCoordinatesTooltip(cir.getReturnValue(), minecraft.player.getBlockX(), minecraft.player.getBlockY(), minecraft.player.getBlockZ());
+                        ItemHelper.addDirectionTooltip(cir.getReturnValue(), minecraft);
                     }
                 }
 
@@ -159,7 +148,7 @@ public class ItemMixin {
 
                 // region Recovery Compass Tooltip
 
-                if (itemStack.is(Items.RECOVERY_COMPASS)) {
+                if (itemStack.is(Items.RECOVERY_COMPASS) && ModConfig.recoveryCompassTooltip) {
 
                     cir.getReturnValue().add(CommonComponents.EMPTY);
                     cir.getReturnValue().add(Component.translatable("gui.interfaced.item.recovery_compass.death_location").withStyle(ChatFormatting.GRAY));
@@ -182,9 +171,9 @@ public class ItemMixin {
 
                 // region Clock Tooltip
 
-                if (itemStack.is(Items.CLOCK)) {
+                if (itemStack.is(Items.CLOCK) && ModConfig.clockTooltip) {
 
-                    int maxHour = ICommonMethods.militaryTime ? 24 : 12;
+                    int maxHour = ModConfig.clockTimeFormat ? 24 : 12;
 
                     long time = minecraft.level.getDayTime();
                     int hour = (int) ((time / 1000L + 6L) % 24L);
@@ -205,7 +194,7 @@ public class ItemMixin {
 
                 // region Environment Detector Tooltip
 
-                if (itemStack.is(ModItems.ENVIRONMENT_DETECTOR)) {
+                if (itemStack.is(ModItems.ENVIRONMENT_DETECTOR) && ModConfig.environmentDetectorTooltip) {
 
                     Holder<Biome> biome = minecraft.level.getBiome(minecraft.player.getOnPos());
 

@@ -20,6 +20,9 @@
     ],
     "client": [
       "net.sydokiddo.interfaced.client.InterfacedClient"
+    ],
+    "modmenu": [
+      "net.sydokiddo.interfaced.misc.config.ModMenuCompatibility"
     ]
   },
   "mixins": [

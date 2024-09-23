@@ -1,0 +1,131 @@
+package net.sydokiddo.interfaced.misc.config;
+
+import com.terraformersmc.modmenu.api.ConfigScreenFactory;
+import com.terraformersmc.modmenu.api.ModMenuApi;
+import dev.isxander.yacl3.api.*;
+import dev.isxander.yacl3.api.controller.BooleanControllerBuilder;
+import dev.isxander.yacl3.api.controller.ControllerBuilder;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.minecraft.network.chat.Component;
+
+@Environment(EnvType.CLIENT)
+public class ModMenuCompatibility implements ModMenuApi {
+
+    private ControllerBuilder<Boolean> genericBooleanOption(Option<Boolean> option) {
+        return this.namedBooleanOption(option, "gui.yes", "gui.no", true);
+    }
+
+    @SuppressWarnings("deprecation")
+    private ControllerBuilder<Boolean> namedBooleanOption(Option<Boolean> option, String yes, String no, boolean colored) {
+        return BooleanControllerBuilder.create(option).valueFormatter(value -> value ? Component.translatable(yes) : Component.translatable(no)).coloured(colored);
+    }
+
+    @Override
+    public ConfigScreenFactory<?> getModConfigScreenFactory() {
+        return parentScreen -> YetAnotherConfigLib.createBuilder().title(Component.translatable("mod.interfaced"))
+
+            .category(ConfigCategory.createBuilder().name(Component.translatable("gui.interfaced.config")).tooltip(Component.translatable("gui.interfaced.config.description"))
+
+                // region Compass Config
+
+                .group(OptionGroup.createBuilder().name(Component.translatable("gui.interfaced.config.compass")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.compass.description")))
+
+                    .option(Option.<Boolean>createBuilder()
+                    .name(Component.translatable("gui.interfaced.config.compass.gui_information")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.compass.gui_information.description")))
+                    .binding(true, () -> ModConfig.compassGUIInformation, newVal -> ModConfig.compassGUIInformation = newVal)
+                    .controller(this::genericBooleanOption)
+                    .build())
+
+                    .option(Option.<Boolean>createBuilder()
+                    .name(Component.translatable("gui.interfaced.config.compass.compass_tooltip")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.compass.compass_tooltip.description")))
+                    .binding(true, () -> ModConfig.compassTooltip, newVal -> ModConfig.compassTooltip = newVal)
+                    .controller(this::genericBooleanOption)
+                    .build())
+
+                    .option(Option.<Boolean>createBuilder()
+                    .name(Component.translatable("gui.interfaced.config.compass.lodestone_compass_tooltip")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.compass.lodestone_compass_tooltip.description")))
+                    .binding(true, () -> ModConfig.lodestoneCompassTooltip, newVal -> ModConfig.lodestoneCompassTooltip = newVal)
+                    .controller(this::genericBooleanOption)
+                    .build())
+
+                    .option(Option.<Boolean>createBuilder()
+                    .name(Component.translatable("gui.interfaced.config.compass.recovery_compass_tooltip")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.compass.recovery_compass_tooltip.description")))
+                    .binding(true, () -> ModConfig.recoveryCompassTooltip, newVal -> ModConfig.recoveryCompassTooltip = newVal)
+                    .controller(this::genericBooleanOption)
+                    .build())
+
+                .build())
+
+                // endregion
+
+                // region Clock Config
+
+                .group(OptionGroup.createBuilder().name(Component.translatable("gui.interfaced.config.clock")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.clock.description")))
+
+                    .option(Option.<Boolean>createBuilder()
+                    .name(Component.translatable("gui.interfaced.config.clock.item_frame_rendering")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.clock.item_frame_rendering.description")))
+                    .binding(true, () -> ModConfig.clockItemFrameRendering, newVal -> ModConfig.clockItemFrameRendering = newVal)
+                    .controller(this::genericBooleanOption)
+                    .build())
+
+                    .option(Option.<Boolean>createBuilder()
+                    .name(Component.translatable("gui.interfaced.config.clock.clock_tooltip")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.clock.clock_tooltip.description")))
+                    .binding(true, () -> ModConfig.clockTooltip, newVal -> ModConfig.clockTooltip = newVal)
+                    .controller(this::genericBooleanOption)
+                    .build())
+
+                    .option(Option.<Boolean>createBuilder()
+                    .name(Component.translatable("gui.interfaced.config.clock.time_format")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.clock.time_format.description")))
+                    .binding(false, () -> ModConfig.clockTimeFormat, newVal -> ModConfig.clockTimeFormat = newVal)
+                    .controller(option -> this.namedBooleanOption(option, "gui.interfaced.config.clock.time_format.military_time", "gui.interfaced.config.clock.time_format.standard_time", false))
+                    .build())
+
+                .build())
+
+                // endregion
+
+                // region Map Config
+
+                .group(OptionGroup.createBuilder().name(Component.translatable("gui.interfaced.config.map")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.map.description")))
+
+                    .option(Option.<Boolean>createBuilder()
+                    .name(Component.translatable("gui.interfaced.config.map.map_image_tooltip")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.map.map_image_tooltip.description")))
+                    .binding(true, () -> ModConfig.mapImageTooltip, newVal -> ModConfig.mapImageTooltip = newVal)
+                    .controller(this::genericBooleanOption)
+                    .build())
+
+                .build())
+
+                // endregion
+
+                // region Environment Detector Config
+
+                .group(OptionGroup.createBuilder().name(Component.translatable("gui.interfaced.config.environment_detector")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.environment_detector.description")))
+
+                    .option(Option.<Boolean>createBuilder()
+                    .name(Component.translatable("gui.interfaced.config.environment_detector.item_interaction")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.environment_detector.item_interaction.description")))
+                    .binding(true, () -> ModConfig.environmentDetectorItemInteraction, newVal -> ModConfig.environmentDetectorItemInteraction = newVal)
+                    .controller(this::genericBooleanOption)
+                    .build())
+
+                .build())
+
+                .group(OptionGroup.createBuilder().name(Component.translatable("gui.interfaced.config.environment_detector")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.environment_detector.description")))
+
+                    .option(Option.<Boolean>createBuilder()
+                    .name(Component.translatable("gui.interfaced.config.environment_detector.environment_detector_tooltip")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.environment_detector.environment_detector_tooltip.description")))
+                    .binding(true, () -> ModConfig.environmentDetectorTooltip, newVal -> ModConfig.environmentDetectorTooltip = newVal)
+                    .controller(this::genericBooleanOption)
+                    .build())
+
+                .build())
+
+                // endregion
+
+            .build())
+
+            .build()
+            .generateScreen(parentScreen);
+    }
+}

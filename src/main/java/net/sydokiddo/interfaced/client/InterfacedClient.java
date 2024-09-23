@@ -21,8 +21,8 @@ import net.sydokiddo.chrysalis.Chrysalis;
 import net.sydokiddo.interfaced.Interfaced;
 import net.sydokiddo.interfaced.registry.items.ModItems;
 import net.sydokiddo.interfaced.registry.misc.ICommonMethods;
-import net.sydokiddo.interfaced.registry.misc.util.EnvironmentDetectorUsedPayload;
-import net.sydokiddo.interfaced.registry.misc.util.NoteBlockPlayedPayload;
+import net.sydokiddo.interfaced.misc.util.EnvironmentDetectorUsedPayload;
+import net.sydokiddo.interfaced.misc.util.NoteBlockPlayedPayload;
 import java.util.Objects;
 
 @Environment(EnvType.CLIENT)

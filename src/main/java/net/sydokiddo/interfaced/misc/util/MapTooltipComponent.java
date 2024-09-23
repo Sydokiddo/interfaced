@@ -1,4 +1,4 @@
-package net.sydokiddo.interfaced.registry.misc.util;
+package net.sydokiddo.interfaced.misc.util;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.fabricmc.api.EnvType;

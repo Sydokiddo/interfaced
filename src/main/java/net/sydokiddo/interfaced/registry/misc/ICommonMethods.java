@@ -26,7 +26,8 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.sydokiddo.chrysalis.misc.util.helpers.ItemHelper;
-import net.sydokiddo.interfaced.registry.misc.util.MapTooltipComponent;
+import net.sydokiddo.interfaced.misc.config.ModConfig;
+import net.sydokiddo.interfaced.misc.util.MapTooltipComponent;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.include.com.google.common.collect.Lists;
 import java.util.Iterator;
@@ -96,7 +97,7 @@ public class ICommonMethods {
     public static void renderCompassOverlay(GuiGraphics guiGraphics) {
 
         Minecraft minecraft = Minecraft.getInstance();
-        if (minecraft.gui.getDebugOverlay().showDebugScreen()) return;
+        if (minecraft.gui.getDebugOverlay().showDebugScreen() || !ModConfig.compassGUIInformation) return;
 
         Player player = minecraft.player;
         assert player != null;
@@ -121,11 +122,9 @@ public class ICommonMethods {
 
     @Environment(EnvType.CLIENT)
     public static ClientTooltipComponent shouldRenderMapTooltip(TooltipComponent tooltipComponent) {
-        if (tooltipComponent instanceof MapTooltipComponent mapTooltipComponent) return mapTooltipComponent;
+        if (tooltipComponent instanceof MapTooltipComponent mapTooltipComponent && ModConfig.mapImageTooltip) return mapTooltipComponent;
         return null;
     }
-
-    public static boolean militaryTime = false;
 
     @SuppressWarnings("all")
     public static Component getClockComponent(int hourOutput, int hour, int minute, ChatFormatting chatFormatting) {
@@ -134,7 +133,7 @@ public class ICommonMethods {
         assert minecraft.level != null;
         Component hourSystem = CommonComponents.EMPTY;
 
-        if (!militaryTime) {
+        if (!ModConfig.clockTimeFormat) {
             if (hour >= 12) hourSystem = Component.translatable("gui.interfaced.item.clock.hour_pm");
             else hourSystem = Component.translatable("gui.interfaced.item.clock.hour_am");
         }
@@ -145,10 +144,10 @@ public class ICommonMethods {
         String clockNumberFormat = (minute < 10 ? "0" : "") + minute;
 
         if (!minecraft.level.dimensionType().hasFixedTime()) {
-            if (militaryTime) return Component.translatable(militaryTimeString, hourOutput, clockNumberFormat).withStyle(chatFormatting);
+            if (ModConfig.clockTimeFormat) return Component.translatable(militaryTimeString, hourOutput, clockNumberFormat).withStyle(chatFormatting);
             else return Component.translatable(standardTimeString, hourOutput, clockNumberFormat, hourSystem).withStyle(chatFormatting);
         } else {
-            if (militaryTime) return Component.translatable(militaryTimeString, "§k00", "§k00").withStyle(ChatFormatting.OBFUSCATED).withStyle(chatFormatting);
+            if (ModConfig.clockTimeFormat) return Component.translatable(militaryTimeString, "§k00", "§k00").withStyle(ChatFormatting.OBFUSCATED).withStyle(chatFormatting);
             else return Component.translatable(standardTimeString, "§k00", "§k00", hourSystem.copy().withStyle(ChatFormatting.OBFUSCATED)).withStyle(chatFormatting);
         }
     }

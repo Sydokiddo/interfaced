@@ -28,5 +28,43 @@
   "subtitles.item.environment_detector.use": "Environment Detector clicks",
 
   "tag.item.interfaced.food_tooltip_blacklisted": "Food Tooltip Blacklisted",
-  "tag.item.interfaced.tooltip_space_blacklisted": "Tooltip Space Blacklisted"
+  "tag.item.interfaced.tooltip_space_blacklisted": "Tooltip Space Blacklisted",
+
+  "gui.interfaced.config": "Interfaced Config",
+  "gui.interfaced.config.description": "Configure the way various mechanics function in this mod.",
+
+  "gui.interfaced.config.compass": "Compasses",
+  "gui.interfaced.config.compass.description": "Options for the functionality of Compasses.",
+
+  "gui.interfaced.config.compass.gui_information": "GUI Information",
+  "gui.interfaced.config.compass.gui_information.description": "When a Compass is in the player's inventory, various information such as coordinates and the player's facing direction will be displayed on the player's screen.",
+  "gui.interfaced.config.compass.compass_tooltip": "Compass Tooltip",
+  "gui.interfaced.config.compass.compass_tooltip.description": "The player's current location and facing direction will be displayed on a tooltip on Compasses.",
+  "gui.interfaced.config.compass.lodestone_compass_tooltip": "Lodestone Compass Tooltip",
+  "gui.interfaced.config.compass.lodestone_compass_tooltip.description": "The location of the bound Lodestone will be displayed on a tooltip on Lodestone Compasses.",
+  "gui.interfaced.config.compass.recovery_compass_tooltip": "Recovery Compass Tooltip",
+  "gui.interfaced.config.compass.recovery_compass_tooltip.description": "The player's most recent death location and dimension will be displayed on a tooltip on Recovery Compasses.",
+
+  "gui.interfaced.config.clock": "Clocks",
+  "gui.interfaced.config.clock.description": "Options for the functionality of Clocks.",
+  "gui.interfaced.config.clock.item_frame_rendering": "Item Frame Rendering",
+  "gui.interfaced.config.clock.item_frame_rendering.description": "The world's current time of day and day counter will be displayed above Clocks that are in Item Frames similarly to name tags.",
+  "gui.interfaced.config.clock.clock_tooltip": "Clock Tooltip",
+  "gui.interfaced.config.clock.clock_tooltip.description": "The world's current time of day and day counter will be displayed on a tooltip on Clocks.",
+  "gui.interfaced.config.clock.time_format": "Time Format",
+  "gui.interfaced.config.clock.time_format.description": "The time formatting that Clocks will use when information is displayed.",
+  "gui.interfaced.config.clock.time_format.standard_time": "Standard Time",
+  "gui.interfaced.config.clock.time_format.military_time": "Military Time",
+
+  "gui.interfaced.config.map": "Maps",
+  "gui.interfaced.config.map.description": "Options for the functionality of Maps.",
+  "gui.interfaced.config.map.map_image_tooltip": "Map Image Tooltip",
+  "gui.interfaced.config.map.map_image_tooltip.description": "Maps will display themselves visually on a tooltip while hovered over.",
+
+  "gui.interfaced.config.environment_detector": "Environment Detectors",
+  "gui.interfaced.config.environment_detector.description": "Options for the functionality of Environment Detectors.",
+  "gui.interfaced.config.environment_detector.item_interaction": "Item Interaction",
+  "gui.interfaced.config.environment_detector.item_interaction.description": "Environment Detectors can be right-clicked with to display the current biome on a HUD overlay.",
+  "gui.interfaced.config.environment_detector.environment_detector_tooltip": "Environment Detector Tooltip",
+  "gui.interfaced.config.environment_detector.environment_detector_tooltip.description": "The current biome's name, temperate, and weather will be displayed on a tooltip on Environment Detectors."
 }

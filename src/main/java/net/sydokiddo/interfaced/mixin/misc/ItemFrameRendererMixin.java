@@ -16,6 +16,7 @@ import net.minecraft.world.entity.EntityAttachment;
 import net.minecraft.world.entity.decoration.ItemFrame;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.phys.Vec3;
+import net.sydokiddo.interfaced.misc.config.ModConfig;
 import net.sydokiddo.interfaced.registry.misc.ICommonMethods;
 import org.joml.Matrix4f;
 import org.spongepowered.asm.mixin.Mixin;
@@ -35,7 +36,7 @@ public abstract class ItemFrameRendererMixin extends EntityRenderer<ItemFrame> {
 
     @Unique
     private boolean isUnnamedClock(ItemFrame itemFrame) {
-        return !itemFrame.getItem().isEmpty() && itemFrame.getItem().is(Items.CLOCK) && !itemFrame.getItem().has(DataComponents.CUSTOM_NAME);
+        return !itemFrame.getItem().isEmpty() && itemFrame.getItem().is(Items.CLOCK) && !itemFrame.getItem().has(DataComponents.CUSTOM_NAME) && ModConfig.clockItemFrameRendering;
     }
 
     @Inject(method = "shouldShowName(Lnet/minecraft/world/entity/decoration/ItemFrame;)Z", at = @At("HEAD"), cancellable = true)
@@ -68,7 +69,7 @@ public abstract class ItemFrameRendererMixin extends EntityRenderer<ItemFrame> {
                 float opacity = Minecraft.getInstance().options.getBackgroundOpacity(0.25F);
                 int finalOpacity = (int) (opacity * 255.0F) << 24;
 
-                int maxHour = ICommonMethods.militaryTime ? 24 : 12;
+                int maxHour = ModConfig.clockTimeFormat ? 24 : 12;
                 long time = Minecraft.getInstance().level.getDayTime();
                 int hour = (int) ((time / 1000L + 6L) % 24L);
                 int minute = (int) (60L * (time % 1000L) / 1000L);

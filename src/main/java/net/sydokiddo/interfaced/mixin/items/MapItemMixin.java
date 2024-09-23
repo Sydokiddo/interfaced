@@ -7,7 +7,8 @@ import net.minecraft.world.inventory.tooltip.TooltipComponent;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.MapItem;
-import net.sydokiddo.interfaced.registry.misc.util.MapTooltipComponent;
+import net.sydokiddo.interfaced.misc.config.ModConfig;
+import net.sydokiddo.interfaced.misc.util.MapTooltipComponent;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
 import java.util.Optional;
@@ -22,7 +23,7 @@ public class MapItemMixin extends Item {
     @Environment(EnvType.CLIENT)
     @Override
     public @NotNull Optional<TooltipComponent> getTooltipImage(@NotNull ItemStack itemStack) {
-        if (MapItem.getSavedData(itemStack, Minecraft.getInstance().level) == null) return super.getTooltipImage(itemStack);
+        if (MapItem.getSavedData(itemStack, Minecraft.getInstance().level) == null || !ModConfig.mapImageTooltip) return super.getTooltipImage(itemStack);
         return Optional.of(new MapTooltipComponent(itemStack));
     }
 }

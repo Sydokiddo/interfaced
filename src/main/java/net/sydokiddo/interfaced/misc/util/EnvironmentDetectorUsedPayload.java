@@ -1,4 +1,4 @@
-package net.sydokiddo.interfaced.registry.misc.util;
+package net.sydokiddo.interfaced.misc.util;
 
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
