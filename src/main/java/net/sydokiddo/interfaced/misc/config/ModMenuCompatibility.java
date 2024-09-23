@@ -173,6 +173,7 @@ public class ModMenuCompatibility implements ModMenuApi {
                 // endregion
 
             .build())
+            .save(ModConfig::saveConfig)
 
             .build()
             .generateScreen(parentScreen);
