@@ -45,6 +45,12 @@ public class ModMenuCompatibility implements ModMenuApi {
                     .build())
 
                     .option(Option.<Boolean>createBuilder()
+                    .name(Component.translatable("gui.interfaced.config.compass.require_compass_for_gui_information")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.compass.require_compass_for_gui_information.description")))
+                    .binding(true, () -> ModConfig.requiresCompassForGUIInformation, newVal -> ModConfig.requiresCompassForGUIInformation = newVal)
+                    .controller(this::genericBooleanOption)
+                    .build())
+
+                    .option(Option.<Boolean>createBuilder()
                     .name(Component.translatable("gui.interfaced.config.compass.compass_tooltip")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.compass.compass_tooltip.description")))
                     .binding(true, () -> ModConfig.compassTooltip, newVal -> ModConfig.compassTooltip = newVal)
                     .controller(this::genericBooleanOption)

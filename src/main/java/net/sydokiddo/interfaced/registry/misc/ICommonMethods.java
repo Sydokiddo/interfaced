@@ -129,7 +129,7 @@ public class ICommonMethods {
         Player player = minecraft.player;
         assert player != null;
 
-        if (minecraft.getCameraEntity() != null && ItemHelper.hasItemInInventory(Items.COMPASS, player)) {
+        if (minecraft.getCameraEntity() != null && (!ModConfig.requiresCompassForGUIInformation || ItemHelper.hasItemInInventory(Items.COMPASS, player))) {
 
             final int heightOffset = 5;
             assert ChatFormatting.WHITE.getColor() != null;

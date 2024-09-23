@@ -28,6 +28,7 @@ public class ModConfig {
     // region Compass Config
 
     @SerialEntry public static boolean compassGUIInformation = true;
+    @SerialEntry public static boolean requiresCompassForGUIInformation = true;
     @SerialEntry public static boolean compassTooltip = true;
     @SerialEntry public static boolean lodestoneCompassTooltip = true;
     @SerialEntry public static boolean recoveryCompassTooltip = true;

@@ -45,6 +45,8 @@
 
   "gui.interfaced.config.compass.gui_information": "GUI Information",
   "gui.interfaced.config.compass.gui_information.description": "When a Compass is in the player's inventory, various information such as coordinates and the player's facing direction will be displayed on the player's screen.",
+  "gui.interfaced.config.compass.require_compass_for_gui_information": "Require Compass for GUI Information",
+  "gui.interfaced.config.compass.require_compass_for_gui_information.description": "Displaying the Compass's GUI information requires the player to have a Compass in their inventory.",
   "gui.interfaced.config.compass.compass_tooltip": "Compass Tooltip",
   "gui.interfaced.config.compass.compass_tooltip.description": "The player's current location and facing direction will be displayed on a tooltip on Compasses.",
   "gui.interfaced.config.compass.lodestone_compass_tooltip": "Lodestone Compass Tooltip",
