@@ -2,7 +2,6 @@ package net.sydokiddo.interfaced.mixin.items;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
@@ -52,7 +51,7 @@ public class ItemMixin {
 
         // region Food Properties Tooltip
 
-        if (!FabricLoader.getInstance().isModLoaded("appleskin") && !itemStack.is(ModTags.FOOD_TOOLTIP_BLACKLISTED)) {
+        if (!ICommonMethods.HAS_APPLESKIN && !itemStack.is(ModTags.FOOD_TOOLTIP_BLACKLISTED) && ModConfig.foodPropertiesTooltip) {
 
             String nutritionString = "gui.interfaced.item.food.nutrition_points";
             String saturationString = "gui.interfaced.item.food.saturation_points";
@@ -85,7 +84,7 @@ public class ItemMixin {
 
         // region Spectral Arrow Effect Tooltip
 
-        if (!FabricLoader.getInstance().isModLoaded("monster_mash")) {
+        if (ModConfig.spectralArrowTooltip) {
 
             ClientLevel clientLevel = Minecraft.getInstance().level;
 
@@ -162,6 +161,7 @@ public class ItemMixin {
 
                         ItemHelper.addCoordinatesTooltip(cir.getReturnValue(), deathX, deathY, deathZ);
                         ItemHelper.addDimensionTooltip(cir.getReturnValue(), minecraft.player.getLastDeathLocation().get().dimension().location().toString());
+
                     } else {
                         ItemHelper.addNullTooltip(cir.getReturnValue());
                     }

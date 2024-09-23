@@ -9,6 +9,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.NoteBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import net.sydokiddo.interfaced.misc.config.ModConfig;
 import net.sydokiddo.interfaced.misc.util.NoteBlockPlayedPayload;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -32,6 +33,7 @@ public class NoteBlockMixin {
 
     @Unique
     private void sendNoteBlockPacket(ServerPlayer serverPlayer) {
+        if (!ModConfig.noteBlockNoteHUD) return;
         ServerPlayNetworking.send(serverPlayer, new NoteBlockPlayedPayload(1));
     }
 }

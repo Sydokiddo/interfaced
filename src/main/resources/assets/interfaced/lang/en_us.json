@@ -59,12 +59,28 @@
   "gui.interfaced.config.map": "Maps",
   "gui.interfaced.config.map.description": "Options for the functionality of Maps.",
   "gui.interfaced.config.map.map_image_tooltip": "Map Image Tooltip",
-  "gui.interfaced.config.map.map_image_tooltip.description": "Maps will display themselves visually on a tooltip while hovered over.",
+  "gui.interfaced.config.map.map_image_tooltip.description": "Maps will display themselves visually on a tooltip while being hovered over.",
 
   "gui.interfaced.config.environment_detector": "Environment Detectors",
   "gui.interfaced.config.environment_detector.description": "Options for the functionality of Environment Detectors.",
   "gui.interfaced.config.environment_detector.item_interaction": "Item Interaction",
   "gui.interfaced.config.environment_detector.item_interaction.description": "Environment Detectors can be right-clicked with to display the current biome on a HUD overlay.",
   "gui.interfaced.config.environment_detector.environment_detector_tooltip": "Environment Detector Tooltip",
-  "gui.interfaced.config.environment_detector.environment_detector_tooltip.description": "The current biome's name, temperate, and weather will be displayed on a tooltip on Environment Detectors."
+  "gui.interfaced.config.environment_detector.environment_detector_tooltip.description": "The current biome's name, temperature, and weather will be displayed on a tooltip on Environment Detectors.",
+
+  "gui.interfaced.config.miscellaneous": "Miscellaneous",
+  "gui.interfaced.config.miscellaneous.description": "Miscellaneous configurable options that don't fit into any other listed categories.",
+  "gui.interfaced.config.miscellaneous.durability_tooltip": "Durability Tooltip",
+  "gui.interfaced.config.miscellaneous.durability_tooltip.description": "Any item that has durability will display a durability tooltip when it is damaged.",
+  "gui.interfaced.config.miscellaneous.food_properties_tooltip": "Food Properties Tooltip",
+  "gui.interfaced.config.miscellaneous.food_properties_tooltip.description": "Any food item will display its properties on a tooltip, such as nutrition, saturation, and status effects.",
+  "gui.interfaced.config.miscellaneous.spectral_arrow_tooltip": "Spectral Arrow Tooltip",
+  "gui.interfaced.config.miscellaneous.spectral_arrow_tooltip.description": "Spectral Arrows will display a tooltip showcasing their Glowing effect for consistency with other effect-giving arrows.",
+  "gui.interfaced.config.miscellaneous.note_block_note_hud": "Note Block Note HUD",
+  "gui.interfaced.config.miscellaneous.note_block_note_hud.description": "Note Blocks will display their currently played note on a HUD overlay when interacted with.",
+
+  "gui.interfaced.config.experimental": "Experimental",
+  "gui.interfaced.config.experimental.description": "Experimental options for a bit more intrusive mechanics.",
+  "gui.interfaced.config.experimental.change_reducedDebugInfo_default_value": "Change reducedDebugInfo Default Value",
+  "gui.interfaced.config.experimental.change_reducedDebugInfo_default_value.description": "Changes the default value of the reducedDebugInfo game rule to encourage using the mod's replacements for the F3 menu. May require restarting!"
 }

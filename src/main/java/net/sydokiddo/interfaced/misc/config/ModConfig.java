@@ -1,6 +1,7 @@
 package net.sydokiddo.interfaced.misc.config;
 
 import dev.isxander.yacl3.config.v2.api.SerialEntry;
+import net.sydokiddo.interfaced.registry.misc.ICommonMethods;
 
 public class ModConfig {
 
@@ -31,6 +32,21 @@ public class ModConfig {
 
     @SerialEntry public static boolean environmentDetectorItemInteraction = true;
     @SerialEntry public static boolean environmentDetectorTooltip = true;
+
+    // endregion
+
+    // region Miscellaneous Config
+
+    @SerialEntry public static boolean durabilityTooltip = true;
+    @SerialEntry public static boolean foodPropertiesTooltip = !ICommonMethods.HAS_APPLESKIN;
+    @SerialEntry public static boolean spectralArrowTooltip = true;
+    @SerialEntry public static boolean noteBlockNoteHUD = true;
+
+    // endregion
+
+    // region Experimental Config
+
+    @SerialEntry public static boolean changeReducedDebugInfoDefaultValue = true;
 
     // endregion
 }

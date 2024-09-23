@@ -8,6 +8,7 @@ import dev.isxander.yacl3.api.controller.ControllerBuilder;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.network.chat.Component;
+import net.sydokiddo.interfaced.registry.misc.ICommonMethods;
 
 @Environment(EnvType.CLIENT)
 public class ModMenuCompatibility implements ModMenuApi {
@@ -109,13 +110,55 @@ public class ModMenuCompatibility implements ModMenuApi {
                     .controller(this::genericBooleanOption)
                     .build())
 
-                .build())
-
-                .group(OptionGroup.createBuilder().name(Component.translatable("gui.interfaced.config.environment_detector")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.environment_detector.description")))
-
                     .option(Option.<Boolean>createBuilder()
                     .name(Component.translatable("gui.interfaced.config.environment_detector.environment_detector_tooltip")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.environment_detector.environment_detector_tooltip.description")))
                     .binding(true, () -> ModConfig.environmentDetectorTooltip, newVal -> ModConfig.environmentDetectorTooltip = newVal)
+                    .controller(this::genericBooleanOption)
+                    .build())
+
+                .build())
+
+                // endregion
+
+                // region Miscellaneous Config
+
+                .group(OptionGroup.createBuilder().name(Component.translatable("gui.interfaced.config.miscellaneous")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.miscellaneous.description")))
+
+                    .option(Option.<Boolean>createBuilder()
+                    .name(Component.translatable("gui.interfaced.config.miscellaneous.durability_tooltip")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.miscellaneous.durability_tooltip.description")))
+                    .binding(true, () -> ModConfig.durabilityTooltip, newVal -> ModConfig.durabilityTooltip = newVal)
+                    .controller(this::genericBooleanOption)
+                    .build())
+
+                    .option(Option.<Boolean>createBuilder()
+                    .name(Component.translatable("gui.interfaced.config.miscellaneous.food_properties_tooltip")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.miscellaneous.food_properties_tooltip.description")))
+                    .binding(!ICommonMethods.HAS_APPLESKIN, () -> ModConfig.foodPropertiesTooltip, newVal -> ModConfig.foodPropertiesTooltip = newVal)
+                    .controller(this::genericBooleanOption)
+                    .build())
+
+                    .option(Option.<Boolean>createBuilder()
+                    .name(Component.translatable("gui.interfaced.config.miscellaneous.spectral_arrow_tooltip")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.miscellaneous.spectral_arrow_tooltip.description")))
+                    .binding(true, () -> ModConfig.spectralArrowTooltip, newVal -> ModConfig.spectralArrowTooltip = newVal)
+                    .controller(this::genericBooleanOption)
+                    .build())
+
+                    .option(Option.<Boolean>createBuilder()
+                    .name(Component.translatable("gui.interfaced.config.miscellaneous.note_block_note_hud")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.miscellaneous.note_block_note_hud.description")))
+                    .binding(true, () -> ModConfig.noteBlockNoteHUD, newVal -> ModConfig.noteBlockNoteHUD = newVal)
+                    .controller(this::genericBooleanOption)
+                    .build())
+
+                .build())
+
+                // endregion
+
+                // region Experimental Config
+
+                .group(OptionGroup.createBuilder().name(Component.translatable("gui.interfaced.config.experimental")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.experimental.description")))
+
+                    .option(Option.<Boolean>createBuilder()
+                    .name(Component.translatable("gui.interfaced.config.experimental.change_reducedDebugInfo_default_value")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.experimental.change_reducedDebugInfo_default_value.description")))
+                    .binding(true, () -> ModConfig.changeReducedDebugInfoDefaultValue, newVal -> ModConfig.changeReducedDebugInfoDefaultValue = newVal)
                     .controller(this::genericBooleanOption)
                     .build())
 

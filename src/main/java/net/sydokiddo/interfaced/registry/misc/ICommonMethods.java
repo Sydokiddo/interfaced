@@ -4,6 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.datafixers.util.Pair;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -35,10 +36,18 @@ import java.util.List;
 
 public class ICommonMethods {
 
+    // region Mod Compatibility Checks
+
+    public static final boolean
+        HAS_APPLESKIN = FabricLoader.getInstance().isModLoaded("appleskin")
+    ;
+
+    // endregion
+
     // region Tooltips
 
     public static void addItemDurabilityTooltip(ItemStack itemStack, List<Component> tooltip, TooltipFlag tooltipFlag) {
-        if (itemStack.isDamaged() && !tooltipFlag.isAdvanced()) {
+        if (itemStack.isDamaged() && !tooltipFlag.isAdvanced() && ModConfig.durabilityTooltip) {
             tooltip.add(Component.translatable("item.durability", itemStack.getMaxDamage() - itemStack.getDamageValue(), itemStack.getMaxDamage()).withStyle(ChatFormatting.GRAY));
             if (!itemStack.is(ModTags.TOOLTIP_SPACE_BLACKLISTED)) ItemHelper.addSpaceOnTooltipIfEnchantedOrTrimmed(itemStack, tooltip);
         }
