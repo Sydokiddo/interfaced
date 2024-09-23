@@ -30,7 +30,7 @@ public class ModMenuCompatibility implements ModMenuApi {
 
                 // region Compass Config
 
-                .group(OptionGroup.createBuilder().name(Component.translatable("gui.interfaced.config.compass")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.compass.description")))
+                .group(OptionGroup.createBuilder().name(Component.translatable("gui.interfaced.config.compass")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.compass.description"))).collapsed(true)
 
                     .option(Option.<Boolean>createBuilder()
                     .name(Component.translatable("gui.interfaced.config.compass.gui_information")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.compass.gui_information.description")))
@@ -62,7 +62,7 @@ public class ModMenuCompatibility implements ModMenuApi {
 
                 // region Clock Config
 
-                .group(OptionGroup.createBuilder().name(Component.translatable("gui.interfaced.config.clock")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.clock.description")))
+                .group(OptionGroup.createBuilder().name(Component.translatable("gui.interfaced.config.clock")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.clock.description"))).collapsed(true)
 
                     .option(Option.<Boolean>createBuilder()
                     .name(Component.translatable("gui.interfaced.config.clock.item_frame_rendering")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.clock.item_frame_rendering.description")))
@@ -88,7 +88,7 @@ public class ModMenuCompatibility implements ModMenuApi {
 
                 // region Map Config
 
-                .group(OptionGroup.createBuilder().name(Component.translatable("gui.interfaced.config.map")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.map.description")))
+                .group(OptionGroup.createBuilder().name(Component.translatable("gui.interfaced.config.map")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.map.description"))).collapsed(true)
 
                     .option(Option.<Boolean>createBuilder()
                     .name(Component.translatable("gui.interfaced.config.map.map_image_tooltip")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.map.map_image_tooltip.description")))
@@ -102,7 +102,7 @@ public class ModMenuCompatibility implements ModMenuApi {
 
                 // region Environment Detector Config
 
-                .group(OptionGroup.createBuilder().name(Component.translatable("gui.interfaced.config.environment_detector")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.environment_detector.description")))
+                .group(OptionGroup.createBuilder().name(Component.translatable("gui.interfaced.config.environment_detector")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.environment_detector.description"))).collapsed(true)
 
                     .option(Option.<Boolean>createBuilder()
                     .name(Component.translatable("gui.interfaced.config.environment_detector.item_interaction")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.environment_detector.item_interaction.description")))
@@ -122,7 +122,7 @@ public class ModMenuCompatibility implements ModMenuApi {
 
                 // region Miscellaneous Config
 
-                .group(OptionGroup.createBuilder().name(Component.translatable("gui.interfaced.config.miscellaneous")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.miscellaneous.description")))
+                .group(OptionGroup.createBuilder().name(Component.translatable("gui.interfaced.config.miscellaneous")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.miscellaneous.description"))).collapsed(true)
 
                     .option(Option.<Boolean>createBuilder()
                     .name(Component.translatable("gui.interfaced.config.miscellaneous.durability_tooltip")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.miscellaneous.durability_tooltip.description")))
@@ -154,11 +154,17 @@ public class ModMenuCompatibility implements ModMenuApi {
 
                 // region Experimental Config
 
-                .group(OptionGroup.createBuilder().name(Component.translatable("gui.interfaced.config.experimental")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.experimental.description")))
+                .group(OptionGroup.createBuilder().name(Component.translatable("gui.interfaced.config.experimental")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.experimental.description"))).collapsed(true)
 
                     .option(Option.<Boolean>createBuilder()
                     .name(Component.translatable("gui.interfaced.config.experimental.change_reducedDebugInfo_default_value")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.experimental.change_reducedDebugInfo_default_value.description")))
                     .binding(true, () -> ModConfig.changeReducedDebugInfoDefaultValue, newVal -> ModConfig.changeReducedDebugInfoDefaultValue = newVal)
+                    .controller(this::genericBooleanOption)
+                    .build())
+
+                    .option(Option.<Boolean>createBuilder()
+                    .name(Component.translatable("gui.interfaced.config.experimental.disable_f3_menu")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.experimental.disable_f3_menu.description")))
+                    .binding(false, () -> ModConfig.disableF3Menu, newVal -> ModConfig.disableF3Menu = newVal)
                     .controller(this::genericBooleanOption)
                     .build())
 

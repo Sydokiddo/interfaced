@@ -82,5 +82,7 @@
   "gui.interfaced.config.experimental": "Experimental",
   "gui.interfaced.config.experimental.description": "Experimental options for a bit more intrusive mechanics.",
   "gui.interfaced.config.experimental.change_reducedDebugInfo_default_value": "Change reducedDebugInfo Default Value",
-  "gui.interfaced.config.experimental.change_reducedDebugInfo_default_value.description": "Changes the default value of the reducedDebugInfo game rule to encourage using the mod's replacements for the F3 menu. May require restarting!"
+  "gui.interfaced.config.experimental.change_reducedDebugInfo_default_value.description": "Changes the default value of the reducedDebugInfo game rule to encourage using the mod's replacements for the F3 menu. May require restarting!",
+  "gui.interfaced.config.experimental.disable_f3_menu": "Disable F3 Menu",
+  "gui.interfaced.config.experimental.disable_f3_menu.description": "Disables the F3 menu entirely."
 }

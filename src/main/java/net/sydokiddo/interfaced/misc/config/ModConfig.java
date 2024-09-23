@@ -47,6 +47,7 @@ public class ModConfig {
     // region Experimental Config
 
     @SerialEntry public static boolean changeReducedDebugInfoDefaultValue = true;
+    @SerialEntry public static boolean disableF3Menu = false;
 
     // endregion
 }

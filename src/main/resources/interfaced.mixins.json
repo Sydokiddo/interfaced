@@ -14,6 +14,7 @@
     "misc.GameRulesMixin"
   ],
   "client": [
+    "misc.DebugScreenOverlayMixin",
     "misc.ItemFrameRendererMixin"
   ],
   "injectors": {
