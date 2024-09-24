@@ -52,8 +52,7 @@ public class ICommonMethods {
         CLOCK_ICON = Component.translatable("gui.interfaced.config.icon.clock"),
         MAP_ICON = Component.translatable("gui.interfaced.config.icon.map"),
         ENVIRONMENT_DETECTOR_ICON = Component.translatable("gui.interfaced.config.icon.environment_detector"),
-        MISCELLANEOUS_ICON = Component.translatable("gui.interfaced.config.icon.miscellaneous"),
-        EXPERIMENTAL_ICON = Component.translatable("gui.interfaced.config.icon.experimental")
+        MISCELLANEOUS_ICON = Component.translatable("gui.interfaced.config.icon.miscellaneous")
     ;
 
     public static void setConfigIconsFont(MutableComponent mutableComponent) {

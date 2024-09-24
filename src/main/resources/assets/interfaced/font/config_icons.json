@@ -50,15 +50,6 @@
       "chars": [
         "\ua004"
       ]
-    },
-    {
-      "type": "bitmap",
-      "file": "interfaced:gui/sprites/config_icons/experimental.png",
-      "ascent": 9,
-      "height": 9,
-      "chars": [
-        "\ua005"
-      ]
     }
   ]
 }

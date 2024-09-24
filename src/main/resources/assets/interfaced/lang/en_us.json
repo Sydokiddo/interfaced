@@ -38,7 +38,6 @@
   "gui.interfaced.config.icon.map": "\ua002",
   "gui.interfaced.config.icon.environment_detector": "\ua003",
   "gui.interfaced.config.icon.miscellaneous": "\ua004",
-  "gui.interfaced.config.icon.experimental": "\ua005",
 
   "gui.interfaced.config.compass": "%s Compasses %s",
   "gui.interfaced.config.compass.description": "Options for the functionality of Compasses.",

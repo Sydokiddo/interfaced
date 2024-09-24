@@ -9,6 +9,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.sydokiddo.chrysalis.registry.ChrysalisRegistry;
 import net.sydokiddo.interfaced.registry.misc.ICommonMethods;
 
 @Environment(EnvType.CLIENT)
@@ -166,7 +167,7 @@ public class ModMenuCompatibility implements ModMenuApi {
 
                 // region Experimental Config
 
-                .group(OptionGroup.createBuilder().name(this.groupNameWithIcon("gui.interfaced.config.experimental", ICommonMethods.EXPERIMENTAL_ICON)).description(OptionDescription.of(Component.translatable("gui.interfaced.config.experimental.description"))).collapsed(true)
+                .group(OptionGroup.createBuilder().name(this.groupNameWithIcon("gui.interfaced.config.experimental", ChrysalisRegistry.WARNING_ICON)).description(OptionDescription.of(Component.translatable("gui.interfaced.config.experimental.description"))).collapsed(true)
 
                     .option(Option.<Boolean>createBuilder()
                     .name(Component.translatable("gui.interfaced.config.experimental.change_reducedDebugInfo_default_value")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.experimental.change_reducedDebugInfo_default_value.description")))
