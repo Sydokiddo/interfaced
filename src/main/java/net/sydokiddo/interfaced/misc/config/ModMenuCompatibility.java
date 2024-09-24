@@ -29,6 +29,12 @@ public class ModMenuCompatibility implements ModMenuApi {
         return Component.translatable(translationString, icon, icon);
     }
 
+    private Component experimentalOptionsGroup() {
+        MutableComponent icon = ChrysalisRegistry.WARNING_ICON;
+        ChrysalisRegistry.setTooltipIconsFont(icon);
+        return Component.translatable("gui.interfaced.config.experimental", icon, icon);
+    }
+
     @Override
     public ConfigScreenFactory<?> getModConfigScreenFactory() {
         return parentScreen -> YetAnotherConfigLib.createBuilder().title(Component.translatable("mod.interfaced"))
@@ -167,7 +173,7 @@ public class ModMenuCompatibility implements ModMenuApi {
 
                 // region Experimental Config
 
-                .group(OptionGroup.createBuilder().name(this.groupNameWithIcon("gui.interfaced.config.experimental", ChrysalisRegistry.WARNING_ICON)).description(OptionDescription.of(Component.translatable("gui.interfaced.config.experimental.description"))).collapsed(true)
+                .group(OptionGroup.createBuilder().name(this.experimentalOptionsGroup()).description(OptionDescription.of(Component.translatable("gui.interfaced.config.experimental.description"))).collapsed(true)
 
                     .option(Option.<Boolean>createBuilder()
                     .name(Component.translatable("gui.interfaced.config.experimental.change_reducedDebugInfo_default_value")).description(OptionDescription.of(Component.translatable("gui.interfaced.config.experimental.change_reducedDebugInfo_default_value.description")))
