@@ -27,7 +27,7 @@ public class EnvironmentDetectorItem extends Item {
         if (!ModConfig.environmentDetectorItemInteraction) return super.use(level, player, interactionHand);
 
         player.playSound(ModSoundEvents.ENVIRONMENT_DETECTOR_USE, 1.0F, 1.0F + level.getRandom().nextFloat() * 0.2F);
-        player.gameEvent(GameEvent.ITEM_INTERACT_START);
+        player.gameEvent(GameEvent.ITEM_INTERACT_FINISH);
 
         if (!level.isClientSide()) {
             player.awardStat(Stats.ITEM_USED.get(this));
