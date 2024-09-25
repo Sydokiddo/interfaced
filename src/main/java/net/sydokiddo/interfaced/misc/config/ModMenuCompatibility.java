@@ -24,6 +24,12 @@ public class ModMenuCompatibility implements ModMenuApi {
         return BooleanControllerBuilder.create(option).valueFormatter(value -> value ? Component.translatable(yes) : Component.translatable(no)).coloured(colored);
     }
 
+    private Component configTitle() {
+        MutableComponent icon = ChrysalisRegistry.GEAR_ICON;
+        ChrysalisRegistry.setTooltipIconsFont(icon);
+        return Component.translatable("gui.interfaced.config", icon, icon);
+    }
+
     private Component groupNameWithIcon(String translationString, MutableComponent icon) {
         ICommonMethods.setConfigIconsFont(icon);
         return Component.translatable(translationString, icon, icon);
@@ -39,7 +45,7 @@ public class ModMenuCompatibility implements ModMenuApi {
     public ConfigScreenFactory<?> getModConfigScreenFactory() {
         return parentScreen -> YetAnotherConfigLib.createBuilder().title(Component.translatable("mod.interfaced"))
 
-            .category(ConfigCategory.createBuilder().name(Component.translatable("gui.interfaced.config")).tooltip(Component.translatable("gui.interfaced.config.description"))
+            .category(ConfigCategory.createBuilder().name(configTitle()).tooltip(Component.translatable("gui.interfaced.config.description"))
 
                 // region Compass Config
 

@@ -30,7 +30,7 @@
   "tag.item.interfaced.food_tooltip_blacklisted": "Food Tooltip Blacklisted",
   "tag.item.interfaced.tooltip_space_blacklisted": "Tooltip Space Blacklisted",
 
-  "gui.interfaced.config": "Interfaced Config",
+  "gui.interfaced.config": "%s Interfaced Config %s",
   "gui.interfaced.config.description": "Configure the way various mechanics function in this mod.",
 
   "gui.interfaced.config.icon.compass": "\ua000",
