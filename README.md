@@ -12,4 +12,7 @@ For more information about Interfaced, please check out the [Wiki](https://githu
 
 Interfaced can be downloaded from these sources:
 
-* (Come back later!)
+- [Current Version: 0.0.2]
+
+* [CurseForge](https://www.curseforge.com/minecraft/mc-mods/interfaced)
+* [Modrinth](https://modrinth.com/mod/interfaced)
