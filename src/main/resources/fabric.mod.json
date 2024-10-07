@@ -34,11 +34,11 @@
   ],
 
   "depends": {
-    "fabricloader": ">=0.16.3",
+    "fabricloader": ">=0.16.5",
     "fabric-api": "*",
     "minecraft": ">=1.21.1",
     "java": ">=21",
-    "chrysalis": ">=0.4.5",
+    "chrysalis": ">=0.4.6",
     "yet_another_config_lib_v3": ">=3.5.0+1.21-fabric"
   },
   "suggests": {

@@ -9,6 +9,8 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.sydokiddo.chrysalis.Chrysalis;
+import net.sydokiddo.chrysalis.misc.util.helpers.ItemHelper;
 import net.sydokiddo.chrysalis.registry.ChrysalisRegistry;
 import net.sydokiddo.interfaced.registry.misc.ICommonMethods;
 
@@ -26,7 +28,7 @@ public class ModMenuCompatibility implements ModMenuApi {
 
     private Component configTitle() {
         MutableComponent icon = ChrysalisRegistry.GEAR_ICON;
-        ChrysalisRegistry.setTooltipIconsFont(icon);
+        ItemHelper.setTooltipIconsFont(icon, Chrysalis.MOD_ID);
         return Component.translatable("gui.interfaced.config", icon, icon);
     }
 
@@ -37,7 +39,7 @@ public class ModMenuCompatibility implements ModMenuApi {
 
     private Component experimentalOptionsGroup() {
         MutableComponent icon = ChrysalisRegistry.WARNING_ICON;
-        ChrysalisRegistry.setTooltipIconsFont(icon);
+        ItemHelper.setTooltipIconsFont(icon, Chrysalis.MOD_ID);
         return Component.translatable("gui.interfaced.config.experimental", icon, icon);
     }
 

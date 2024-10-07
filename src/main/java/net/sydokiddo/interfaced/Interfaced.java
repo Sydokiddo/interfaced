@@ -20,7 +20,7 @@ public class Interfaced implements ModInitializer {
 	public void onInitialize() {
 		if (Chrysalis.CHRYSALIS_INITIALIZED) {
 			InterfacedRegistry.registerAll();
-            LOGGER.info("Thank you for downloading {}!", LOGGER.getName());
+        	LOGGER.info("Thank you for downloading {}!", LOGGER.getName());
 		} else {
 			LOGGER.error("Failed to initialize mod, Chrysalis is not installed!", new Exception());
 		}
