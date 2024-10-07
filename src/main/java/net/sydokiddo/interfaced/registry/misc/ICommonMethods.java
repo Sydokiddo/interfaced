@@ -123,7 +123,7 @@ public class ICommonMethods {
     public static void renderCompassOverlay(GuiGraphics guiGraphics) {
 
         Minecraft minecraft = Minecraft.getInstance();
-        if (minecraft.gui.getDebugOverlay().showDebugScreen() || !ModConfig.compassGUIInformation) return;
+        if (minecraft.gui.getDebugOverlay().showDebugScreen() || !Minecraft.renderNames() || !ModConfig.compassGUIInformation) return;
 
         Player player = minecraft.player;
         assert player != null;
