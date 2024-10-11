@@ -21,9 +21,8 @@ public class ModMenuCompatibility implements ModMenuApi {
         return this.namedBooleanOption(option, "gui.yes", "gui.no", true);
     }
 
-    @SuppressWarnings("deprecation")
     private ControllerBuilder<Boolean> namedBooleanOption(Option<Boolean> option, String yes, String no, boolean colored) {
-        return BooleanControllerBuilder.create(option).valueFormatter(value -> value ? Component.translatable(yes) : Component.translatable(no)).coloured(colored);
+        return BooleanControllerBuilder.create(option).formatValue(value -> value ? Component.translatable(yes) : Component.translatable(no)).coloured(colored);
     }
 
     private Component configTitle() {
@@ -202,7 +201,7 @@ public class ModMenuCompatibility implements ModMenuApi {
             .build())
             .save(ModConfig::saveConfig)
 
-            .build()
-            .generateScreen(parentScreen);
+        .build()
+        .generateScreen(parentScreen);
     }
 }
