@@ -12,7 +12,6 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffectUtil;
 import net.minecraft.world.effect.MobEffects;
@@ -193,6 +192,7 @@ public class ItemMixin {
 
                     cir.getReturnValue().add(ICommonMethods.getClockComponent(hourOutput, hour, minute, chatFormatting));
                     cir.getReturnValue().add(ICommonMethods.getDayComponent(chatFormatting));
+                    cir.getReturnValue().add(ICommonMethods.getMoonPhaseComponent(chatFormatting));
                 }
 
                 // endregion
@@ -210,17 +210,7 @@ public class ItemMixin {
                     });
 
                     BlockPos highestPos = new BlockPos(minecraft.player.getBlockX(), minecraft.level.getHeight(Heightmap.Types.WORLD_SURFACE, minecraft.player.getBlockX(), minecraft.player.getBlockZ()), minecraft.player.getBlockZ()).above();
-                    MutableComponent weatherType;
-
-                    if (minecraft.level.isRainingAt(highestPos)) {
-                        if (minecraft.level.isThundering()) weatherType = Component.translatable("gui.chrysalis.weather.thundering");
-                        else weatherType = Component.translatable("gui.chrysalis.weather.raining");
-                    } else {
-                        if (minecraft.level.isRaining() && biome.value().getPrecipitationAt(highestPos) == Biome.Precipitation.SNOW) weatherType = Component.translatable("gui.chrysalis.weather.snowing");
-                        else weatherType = Component.translatable("gui.chrysalis.weather.clear");
-                    }
-
-                    cir.getReturnValue().add(Component.translatable("gui.interfaced.item.environment_detector.weather", weatherType.withStyle(ChatFormatting.BLUE)).withStyle(ChatFormatting.BLUE));
+                    cir.getReturnValue().add(Component.translatable("gui.interfaced.item.environment_detector.weather", ItemHelper.getWeatherComponent(minecraft.level, biome, highestPos).copy().withStyle(ChatFormatting.BLUE)).withStyle(ChatFormatting.BLUE));
                 }
 
                 // endregion

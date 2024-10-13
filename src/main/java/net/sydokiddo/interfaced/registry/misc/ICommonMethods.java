@@ -9,6 +9,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
+import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.CommonComponents;
@@ -27,7 +28,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.sydokiddo.chrysalis.misc.util.helpers.ItemHelper;
-import net.sydokiddo.interfaced.Interfaced;
 import net.sydokiddo.interfaced.misc.config.ModConfig;
 import net.sydokiddo.interfaced.misc.util.MapTooltipComponent;
 import org.jetbrains.annotations.NotNull;
@@ -54,10 +54,6 @@ public class ICommonMethods {
         ENVIRONMENT_DETECTOR_ICON = Component.translatable("gui.interfaced.config.icon.environment_detector"),
         MISCELLANEOUS_ICON = Component.translatable("gui.interfaced.config.icon.miscellaneous")
     ;
-
-    public static void setConfigIconsFont(MutableComponent mutableComponent) {
-        mutableComponent.setStyle(mutableComponent.getStyle().withFont(Interfaced.id("config_icons")));
-    }
 
     // endregion
 
@@ -152,7 +148,6 @@ public class ICommonMethods {
         return null;
     }
 
-    @SuppressWarnings("all")
     public static Component getClockComponent(int hourOutput, int hour, int minute, ChatFormatting chatFormatting) {
 
         Minecraft minecraft = Minecraft.getInstance();
@@ -179,9 +174,15 @@ public class ICommonMethods {
     }
 
     public static Component getDayComponent(ChatFormatting chatFormatting) {
-        Minecraft minecraft = Minecraft.getInstance();
-        assert minecraft.level != null;
-        return Component.translatable("gui.interfaced.item.clock.day", minecraft.level.getDayTime() / 24000L).withStyle(chatFormatting);
+        ClientLevel clientLevel = Minecraft.getInstance().level;
+        assert clientLevel != null;
+        return Component.translatable("gui.interfaced.item.clock.day", clientLevel.getDayTime() / 24000L).withStyle(chatFormatting);
+    }
+
+    public static Component getMoonPhaseComponent(ChatFormatting chatFormatting) {
+        ClientLevel clientLevel = Minecraft.getInstance().level;
+        assert clientLevel != null;
+        return Component.translatable("gui.interfaced.item.clock.moon_phase", ItemHelper.getMoonPhaseComponent(clientLevel)).withStyle(chatFormatting);
     }
 
     // endregion

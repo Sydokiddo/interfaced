@@ -80,16 +80,18 @@ public abstract class ItemFrameRendererMixin extends EntityRenderer<ItemFrame> {
                 if (hourOutput == 0) hourOutput = maxHour;
 
                 Font font = this.getFont();
-                int xPos = -32;
-                int yPos = -10;
-
+                final int xPos = -32;
+                final int yPos = -20;
                 ChatFormatting chatFormatting = ChatFormatting.WHITE;
 
                 font.drawInBatch(ICommonMethods.getClockComponent(hourOutput, hour, minute, chatFormatting), xPos, yPos, 0, false, matrix4f, multiBufferSource, Font.DisplayMode.SEE_THROUGH, finalOpacity, light);
                 font.drawInBatch(ICommonMethods.getClockComponent(hourOutput, hour, minute, chatFormatting), xPos, yPos, -1, false, matrix4f, multiBufferSource, Font.DisplayMode.NORMAL, 0, light);
 
-                font.drawInBatch(ICommonMethods.getDayComponent(chatFormatting), xPos, 0, 0, false, matrix4f, multiBufferSource, Font.DisplayMode.SEE_THROUGH, finalOpacity, light);
-                font.drawInBatch(ICommonMethods.getDayComponent(chatFormatting), xPos, 0, -1, false, matrix4f, multiBufferSource, Font.DisplayMode.NORMAL, 0, light);
+                font.drawInBatch(ICommonMethods.getDayComponent(chatFormatting), xPos, yPos + 10, 0, false, matrix4f, multiBufferSource, Font.DisplayMode.SEE_THROUGH, finalOpacity, light);
+                font.drawInBatch(ICommonMethods.getDayComponent(chatFormatting), xPos, yPos + 10, -1, false, matrix4f, multiBufferSource, Font.DisplayMode.NORMAL, 0, light);
+
+                font.drawInBatch(ICommonMethods.getMoonPhaseComponent(chatFormatting), xPos, yPos + 20, 0, false, matrix4f, multiBufferSource, Font.DisplayMode.SEE_THROUGH, finalOpacity, light);
+                font.drawInBatch(ICommonMethods.getMoonPhaseComponent(chatFormatting), xPos, yPos + 20, -1, false, matrix4f, multiBufferSource, Font.DisplayMode.NORMAL, 0, light);
 
                 poseStack.popPose();
             }

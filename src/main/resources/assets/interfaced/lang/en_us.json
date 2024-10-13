@@ -17,6 +17,7 @@
   "gui.interfaced.item.clock.hour_am": "AM",
   "gui.interfaced.item.clock.hour_pm": "PM",
   "gui.interfaced.item.clock.day": "Day: %s",
+  "gui.interfaced.item.clock.moon_phase": "Moon Phase: %s",
 
   "gui.interfaced.item.food.nutrition_points": "+%s Nutrition",
   "gui.interfaced.item.food.saturation_points": "+%s Saturation",
@@ -29,9 +30,6 @@
 
   "tag.item.interfaced.food_tooltip_blacklisted": "Food Tooltip Blacklisted",
   "tag.item.interfaced.tooltip_space_blacklisted": "Tooltip Space Blacklisted",
-
-  "gui.interfaced.config": "%s Interfaced Config %s",
-  "gui.interfaced.config.description": "Configure the way various mechanics function in this mod.",
 
   "gui.interfaced.config.icon.compass": "\ua000",
   "gui.interfaced.config.icon.clock": "\ua001",
@@ -56,9 +54,9 @@
   "gui.interfaced.config.clock": "%s Clocks %s",
   "gui.interfaced.config.clock.description": "Options for the functionality of Clocks.",
   "gui.interfaced.config.clock.item_frame_rendering": "Item Frame Rendering",
-  "gui.interfaced.config.clock.item_frame_rendering.description": "The world's current time of day and day counter will be displayed above Clocks that are in Item Frames similarly to name tags.",
+  "gui.interfaced.config.clock.item_frame_rendering.description": "The world's current time of day, day counter, and moon phase will be displayed above Clocks that are in Item Frames similarly to name tags.",
   "gui.interfaced.config.clock.clock_tooltip": "Clock Tooltip",
-  "gui.interfaced.config.clock.clock_tooltip.description": "The world's current time of day and day counter will be displayed on a tooltip on Clocks.",
+  "gui.interfaced.config.clock.clock_tooltip.description": "The world's current time of day, day counter, and moon phase will be displayed on a tooltip on Clocks.",
   "gui.interfaced.config.clock.time_format": "Time Format",
   "gui.interfaced.config.clock.time_format.description": "The time formatting that Clocks will use when information is displayed.",
   "gui.interfaced.config.clock.time_format.standard_time": "Standard Time",
@@ -76,8 +74,6 @@
   "gui.interfaced.config.environment_detector.environment_detector_tooltip": "Environment Detector Tooltip",
   "gui.interfaced.config.environment_detector.environment_detector_tooltip.description": "The current biome's name, temperature, and weather will be displayed on a tooltip on Environment Detectors.",
 
-  "gui.interfaced.config.miscellaneous": "%s Miscellaneous %s",
-  "gui.interfaced.config.miscellaneous.description": "Miscellaneous configurable options that don't fit into any other listed categories.",
   "gui.interfaced.config.miscellaneous.durability_tooltip": "Durability Tooltip",
   "gui.interfaced.config.miscellaneous.durability_tooltip.description": "Any item that has durability will display a durability tooltip when it is damaged.",
   "gui.interfaced.config.miscellaneous.food_properties_tooltip": "Food Properties Tooltip",
@@ -87,8 +83,6 @@
   "gui.interfaced.config.miscellaneous.note_block_note_hud": "Note Block Note HUD",
   "gui.interfaced.config.miscellaneous.note_block_note_hud.description": "Note Blocks will display their currently played note on a HUD overlay when interacted with.",
 
-  "gui.interfaced.config.experimental": "%s Experimental %s",
-  "gui.interfaced.config.experimental.description": "Experimental options for a bit more intrusive mechanics.",
   "gui.interfaced.config.experimental.change_reducedDebugInfo_default_value": "Change reducedDebugInfo Default Value",
   "gui.interfaced.config.experimental.change_reducedDebugInfo_default_value.description": "Changes the default value of the reducedDebugInfo game rule to encourage using the mod's replacements for the F3 menu. May require restarting!",
   "gui.interfaced.config.experimental.disable_f3_menu": "Disable F3 Menu",
