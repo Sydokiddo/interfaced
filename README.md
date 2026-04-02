@@ -1,5 +1,7 @@
 ![github_icon](images/mod_icon.png)
 
+**Update: This mod has been discontinued, and its content is being transferred over to a newer mod of mine in the near future! In addition, all of my future mods will now be on NeoForge exclusively.**
+
 ## **About Interfaced**
 
 Interfaced is a small Minecraft mod for [Fabric](https://fabricmc.net) 1.21.1 that improves upon various GUIs in the game. This mod aims to come up with more elegant solutions to the way information is displayed, from replacements for unimmersive debug menus and more!
